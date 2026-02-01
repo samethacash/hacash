@@ -451,7 +451,7 @@ html:not(.dark-mode) .moon-icon {
 /* ===== HERO SECTION ===== */
 .hero {
     padding: 20px clamp(1rem, 3vw, 2rem) 0;
-    margin-top: 200px;
+    margin-top: 120px;
     position: relative;
     overflow: hidden;
     min-height: auto;
