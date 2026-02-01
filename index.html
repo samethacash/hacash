@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.coingecko.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;">
+    <meta name="description" content="Hacash - Real-Time Global Cryptocurrency Settlement Network with 1M+ TPS capability">
+    <meta name="keywords" content="Hacash, cryptocurrency, blockchain, payments, settlement, scalability, decentralization">
+    <meta name="theme-color" content="#0066cc">
+    <meta name="author" content="Hacash">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Hacash - Real-Time Cryptocurrency Settlement">
+    <meta property="og:description" content="1M+ TPS, instant settlement, true decentralization">
+    <meta property="og:image" content="images/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Hacash - Real-Time Cryptocurrency Settlement Network</title>
+    <link rel="canonical" href="https://hacashwebsite.com/">
+    <link rel="preload" as="image" href="images/logo.png">
+    <link rel="preload" as="style" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FD7RE2P5G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8FD7RE2P5G');
+    </script>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particle-container" id="particleContainer"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logo">
+                <img src="images/logo.png" alt="Hacash Logo" class="logo-img">
+                <div class="logo-text">HACASH</div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#problem" class="nav-link">Problem</a></li>
+                <li><a href="#solution" class="nav-link">Solution</a></li>
+                <li><a href="#stats" class="nav-link">Stats</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="https://hacash.org/whitepaper.pdf" class="nav-link" target="_blank">Whitepaper</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="darkModeBtn" class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Price Banner with Real-time Updates -->
+    <div class="price-banner" id="priceBanner">
+        <div class="price-wrapper">
+            <span class="price-label">HAC Price:</span>
+            <span class="price-value" id="hacPrice">Loading...</span>
+            <span class="price-change" id="priceChange"></span>
+            <span class="price-status" id="priceStatus">●</span>
+        </div>
+    </div>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="text-gradient">The Future of Global Payments</span>
+                </h1>
+                <p class="hero-subtitle">Hacash enables <strong>1M+ transactions per second</strong> with instant settlement, true decentralization, and cryptographic security—without sacrificing what makes cryptocurrency valuable.</p>
+                <div class="hero-cta">
+                    <a href="#problem" class="btn btn-primary btn-icon">
+                        <span>Discover How</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://hacash.org/whitepaper.pdf" class="btn btn-secondary" target="_blank">Read Whitepaper</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-graphic" id="heroGraphic">
+                    <div class="network-grid">
+                        <div class="grid-line grid-h"></div>
+                        <div class="grid-line grid-h"></div>
+                        <div class="grid-line grid-v"></div>
+                        <div class="grid-line grid-v"></div>
+                    </div>
+                    <svg class="network-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0066cc;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#00d084;stop-opacity:0.8" />
+                            </linearGradient>
+                        </defs>
+                        <g class="nodes-group">
+                            <circle cx="200" cy="200" r="8" class="node node-center" fill="url(#nodeGradient)"/>
+                            <circle cx="100" cy="100" r="6" class="node node-1" fill="url(#nodeGradient)"/>
+                            <circle cx="300" cy="100" r="6" class="node node-2" fill="url(#nodeGradient)"/>
+                            <circle cx="100" cy="300" r="6" class="node node-3" fill="url(#nodeGradient)"/>
+                            <circle cx="300" cy="300" r="6" class="node node-4" fill="url(#nodeGradient)"/>
+                        </g>
+                        <g class="connections-group">
+                            <line x1="200" y1="200" x2="100" y2="100" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="200" y1="200" x2="300" y2="100" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="200" y1="200" x2="100" y2="300" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
+                            <line x1="200" y1="200" x2="300" y2="300" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">The Problem with Today's Payments</h2>
+                <p class="section-subtitle">Fundamental limitations that cryptocurrency promised to solve</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card" data-delay="0">
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <h3>Throughput Limits</h3>
+                        <p>Bitcoin: 7 TPS. Visa: 65,000+ TPS. Yet crypto claims to revolutionize global payments. The math doesn't work.</p>
+                    </div>
+                    <div class="card-accent"></div>
+                </div>
+                <div class="problem-card" data-delay="1">
+                    <div class="card-number">02</div>
+                    <div class="card-content">
+                        <h3>Centralization Risk</h3>
+                        <p>Payment channels create hub-and-spoke networks. Large hubs become the new banks. We solved decentralization on Layer 1, only to recreate it on Layer 2.</p>
+                    </div>
+                    <div class="card-accent"></div>
+                </div>
+                <div class="problem-card" data-delay="2">
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <h3>Settlement Friction</h3>
+                        <p>Traditional finance takes days. Crypto often takes hours or minutes. Global commerce needs sub-second settlement with zero counterparty risk.</p>
+                    </div>
+                    <div class="card-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">The Hacash Solution</h2>
+                <p class="section-subtitle">Designed for commerce from day one</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card" data-delay="0">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Infinite Scalability</h3>
+                    <p>Channel chains achieve 1M+ TPS through parallel payment channels with atomic settlement. No consensus bottleneck.</p>
+                    <div class="card-link">Learn more →</div>
+                </div>
+                <div class="solution-card" data-delay="1">
+                    <div class="solution-icon">🕸️</div>
+                    <h3>Forced Decentralization</h3>
+                    <p>Technical design prevents hub centralization through locking periods and immediate settlement. Economics enforce decentralization.</p>
+                    <div class="card-link">Learn more →</div>
+                </div>
+                <div class="solution-card" data-delay="2">
+                    <div class="solution-icon">🔐</div>
+                    <h3>Cryptographic Certainty</h3>
+                    <p>Game-theoretic security means dishonesty costs 100% of locked funds. Rules, not trust, ensure settlement finality.</p>
+                    <div class="card-link">Learn more →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section with Animated Counters -->
+    <section id="stats" class="stats-section section">
+        <div class="stats-background"></div>
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">The Numbers</h2>
+                <p class="section-subtitle">Performance metrics that speak for themselves</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item" data-value="1000000" data-label="TPS">
+                    <div class="stat-value" id="stat-1">1M+</div>
+                    <div class="stat-label">Transactions/Second</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="stat-item" data-value="0.001" data-label="%">
+                    <div class="stat-value" id="stat-2">&lt;0.1%</div>
+                    <div class="stat-label">Transaction Fees</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 99%"></div>
+                    </div>
+                </div>
+                <div class="stat-item" data-value="0" data-label="ms">
+                    <div class="stat-value" id="stat-3">Instant</div>
+                    <div class="stat-label">Settlement Time</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="stat-item" data-value="100" data-label="%">
+                    <div class="stat-value" id="stat-4">100%</div>
+                    <div class="stat-label">Decentralized</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="stat-item" data-value="22000000" data-label="coins">
+                    <div class="stat-value" id="stat-5">22M</div>
+                    <div class="stat-label">Total Supply</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 87%"></div>
+                    </div>
+                </div>
+                <div class="stat-item" data-value="315" data-label="%">
+                    <div class="stat-value" id="stat-6">315%</div>
+                    <div class="stat-label">Node Annual Return</div>
+                    <div class="stat-bar">
+                        <div class="stat-progress" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Enterprise Architecture</h2>
+                <p class="section-subtitle">Built for the demands of global commerce</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-delay="0">
+                    <div class="feature-icon">👥</div>
+                    <h3>Multi-Signature Accounts</h3>
+                    <p>Support for up to 200 private keys managing a single address. Enable joint custody, escrow, and complex approval workflows.</p>
+                    <div class="feature-meta">Up to 200 keys</div>
+                </div>
+                <div class="feature-card" data-delay="1">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Hierarchical Equity Control</h3>
+                    <p>Corporate structures with voting rights, beneficiary designation, and dynamic management. Fixed addresses through organizational changes.</p>
+                    <div class="feature-meta">Voting enabled</div>
+                </div>
+                <div class="feature-card" data-delay="2">
+                    <div class="feature-icon">⚛️</div>
+                    <h3>Atomic Transactions</h3>
+                    <p>Multi-party transactions execute simultaneously or fail completely. Eliminates settlement risk and intermediate states.</p>
+                    <div class="feature-meta">All-or-nothing</div>
+                </div>
+                <div class="feature-card" data-delay="3">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-Time Settlement</h3>
+                    <p>Funds transfer across all parties in milliseconds. Finality guaranteed by cryptographic proof and punitive mechanisms.</p>
+                    <div class="feature-meta">Instant finality</div>
+                </div>
+                <div class="feature-card" data-delay="4">
+                    <div class="feature-icon">💳</div>
+                    <h3>Payment Flexibility</h3>
+                    <p>Self-pay, payment requests, delegated payments, and equity operations. Adapts to diverse financial structures.</p>
+                    <div class="feature-meta">Multi-mode</div>
+                </div>
+                <div class="feature-card" data-delay="5">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Mechanisms</h3>
+                    <p>Payment mixing, deferred settlement, encrypted channels. Balance privacy with auditability for compliance.</p>
+                    <div class="feature-meta">Encrypted</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="tech-section section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Channel chain architecture explained</p>
+            </div>
+            <div class="tech-content">
+                <div class="tech-text">
+                    <h3>Channel Chain Architecture</h3>
+                    <p>Two parties lock funds in a payment channel. Transactions occur off-chain instantly. Only final settlement broadcasts to main network.</p>
+                    <ul class="tech-list">
+                        <li>
+                            <span class="tech-icon">✓</span>
+                            <div>
+                                <strong>Off-Chain Settlement:</strong> Unlimited private transactions between parties
+                            </div>
+                        </li>
+                        <li>
+                            <span class="tech-icon">✓</span>
+                            <div>
+                                <strong>Sequential Signing:</strong> Multi-step protocol ensuring fund security
+                            </div>
+                        </li>
+                        <li>
+                            <span class="tech-icon">✓</span>
+                            <div>
+                                <strong>Atomic Operations:</strong> All-or-nothing settlement preventing partial transfers
+                            </div>
+                        </li>
+                        <li>
+                            <span class="tech-icon">✓</span>
+                            <div>
+                                <strong>Punitive Measures:</strong> Dishonest parties lose all locked funds
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tech-visual">
+                    <div class="channel-diagram">
+                        <div class="channel-flow">
+                            <div class="flow-step active" data-step="1">
+                                <div class="step-circle">1</div>
+                                <p>Route<br/>Discovery</p>
+                            </div>
+                            <div class="flow-connector">
+                                <div class="connector-line"></div>
+                            </div>
+                            <div class="flow-step" data-step="2">
+                                <div class="step-circle">2</div>
+                                <p>Build<br/>Transaction</p>
+                            </div>
+                            <div class="flow-connector">
+                                <div class="connector-line"></div>
+                            </div>
+                            <div class="flow-step" data-step="3">
+                                <div class="step-circle">3</div>
+                                <p>Sequential<br/>Signing</p>
+                            </div>
+                            <div class="flow-connector">
+                                <div class="connector-line"></div>
+                            </div>
+                            <div class="flow-step" data-step="4">
+                                <div class="step-circle">4</div>
+                                <p>Instant<br/>Settlement</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about Hacash</p>
+            </div>
+            <div class="faq-grid">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>How is Hacash different from Bitcoin?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Bitcoin:</strong> 7 TPS, 10-minute blocks, fixed 21M supply, no scaling.</p>
+                        <p><strong>Hacash:</strong> 1M+ TPS, instant settlement, 22M supply with rules-based issuance, designed for commerce from day one.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Isn't this just Lightning Network?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Lightning:</strong> Hub-and-spoke topology, channels lock funds in pairs, concentration risk.</p>
+                        <p><strong>Hacash:</strong> Mesh topology, channels support parallel flows, forced decentralization, atomic multi-channel payments.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>How does security work without on-chain finality?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Hacash uses game theory: dishonesty costs 100% of locked funds. Atomic settlements mean all parties receive/disburse simultaneously—no intermediate states where someone wins while another loses.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>What if a channel operator goes offline?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>You can unilaterally close the channel and broadcast your latest signed balance to the main network. Penalties exist to discourage this, but you never lose funds. With thousands of operators, finding alternative routes is trivial.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>Who controls Hacash?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>No one and everyone. Thousands of independent nodes run the network. Code is open source. Currency issuance follows algorithmic rules—not controlled by corporations or governments.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        <span>How do I earn by running a node?</span>
+                        <span class="faq-toggle">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p><strong>Channel Fees:</strong> Charge 0.1-1% per transaction routed. <strong>Channel Interest:</strong> 0.1% compound every 34 days on locked funds (~1.056% annual). <strong>Mining Rewards:</strong> Compete for block rewards.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section">
+        <div class="cta-background">
+            <div class="cta-gradient"></div>
+            <div class="cta-particles"></div>
+        </div>
+        <div class="section-container">
+            <h2 class="cta-title">Ready to Transform<br/>Global Payments?</h2>
+            <p class="cta-subtitle">Read the complete whitepaper and understand how Hacash achieves infinite scalability while maintaining true decentralization and cryptographic security.</p>
+            <div class="cta-actions">
+                <a href="https://hacash.org/whitepaper.pdf" class="btn btn-primary btn-large" target="_blank">
+                    <span>Download Whitepaper</span>
+                    <span class="arrow">→</span>
+                </a>
+                <a href="#" class="btn btn-secondary" id="ctaSecondary">Join Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Hacash" class="footer-logo-img">
+                        <span>HACASH</span>
+                    </div>
+                    <p>A cryptocurrency system designed for large-scale payments and instant settlement with infinite scalability.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#problem">Problem</a></li>
+                        <li><a href="#solution">Solution</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://hacash.org/whitepaper.pdf" target="_blank">Whitepaper</a></li>
+                        <li><a href="https://github.com/hacash" target="_blank">GitHub</a></li>
+                        <li><a href="https://hacash.org" target="_blank">Official Site</a></li>
+                        <li><a href="https://t.me/hacash" target="_blank">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Network</h4>
+                    <ul>
+                        <li><a href="#">Mainnet</a></li>
+                        <li><a href="#">Testnet</a></li>
+                        <li><a href="#">Nodes</a></li>
+                        <li><a href="#">Explorers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hacash Documentation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="script.js"></script>
+</body>
+</html>
