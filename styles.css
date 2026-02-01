@@ -86,7 +86,7 @@ body {
     background-color: var(--bg-primary);
     transition: background-color var(--transition), color var(--transition);
     line-height: 1.6;
-    font-size: clamp(14px, 1vw, 16px);
+    font-size: clamp(14px, 2vw, 16px);
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
@@ -179,6 +179,7 @@ pre, code, textarea {
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     transition: background var(--transition), box-shadow var(--transition);
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
 }
 
 html.dark-mode .navbar {
@@ -192,19 +193,19 @@ html.dark-mode .navbar {
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 clamp(1rem, 3vw, 2rem);
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: clamp(56px, 12vw, 70px);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: clamp(0.3rem, 1vw, 0.5rem);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
     letter-spacing: -0.5px;
     text-decoration: none;
     color: var(--text-primary);
@@ -217,8 +218,8 @@ html.dark-mode .navbar {
 }
 
 .logo-img {
-    width: 32px;
-    height: 32px;
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
     object-fit: contain;
 }
 
@@ -242,7 +243,7 @@ html.dark-mode .navbar {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     transition: color var(--transition-fast);
     position: relative;
 }
@@ -537,9 +538,9 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: clamp(1rem, 3vw, 3rem);
     line-height: 1.8;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -556,12 +557,12 @@ html:not(.dark-mode) .moon-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-sm);
-    padding: 12px 24px;
+    gap: clamp(0.3rem, 1vw, 0.5rem);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 24px);
     border: none;
     border-radius: var(--radius);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     cursor: pointer;
     transition: all var(--transition-fast);
     text-decoration: none;
@@ -784,7 +785,7 @@ html:not(.dark-mode) .moon-icon {
 .section-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
 .section-header {
@@ -815,13 +816,13 @@ html:not(.dark-mode) .moon-icon {
 
 .problem-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
 }
 
 .problem-card {
     background: var(--bg-primary);
-    padding: var(--spacing-2xl);
+    padding: clamp(0.75rem, 3vw, 3rem);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     transition: all var(--transition);
@@ -902,13 +903,13 @@ html:not(.dark-mode) .moon-icon {
 
 .solution-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
 }
 
 .solution-card {
     background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 208, 132, 0.05));
-    padding: var(--spacing-2xl);
+    padding: clamp(0.75rem, 3vw, 3rem);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     text-align: center;
@@ -988,8 +989,8 @@ html:not(.dark-mode) .moon-icon {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
     position: relative;
     z-index: 1;
 }
@@ -1086,13 +1087,13 @@ html:not(.dark-mode) .moon-icon {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
 }
 
 .feature-card {
     background: var(--bg-primary);
-    padding: var(--spacing-2xl);
+    padding: clamp(0.75rem, 3vw, 3rem);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     transition: all var(--transition);
@@ -1177,7 +1178,7 @@ html.dark-mode .feature-card {
 
 /* ===== TECHNOLOGY SECTION ===== */
 .tech-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
 }
 
 .tech-content {
@@ -1313,8 +1314,8 @@ html.dark-mode .feature-card {
 
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -1455,7 +1456,7 @@ html.dark-mode .feature-card {
 .footer {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
-    padding: 80px var(--spacing-xl) var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem) clamp(40px, 8vw, 80px);
 }
 
 .footer-container {
@@ -1465,9 +1466,9 @@ html.dark-mode .feature-card {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-2xl);
-    margin-bottom: var(--spacing-2xl);
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-bottom: clamp(1rem, 3vw, 3rem);
 }
 
 .footer-section h4 {
@@ -1551,355 +1552,223 @@ html.dark-mode .feature-card {
     color: var(--primary);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
-    html, body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
+/* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
 
-    /* Reduce orb sizes for mobile */
-    .orb-1 {
-        width: 250px;
-        height: 250px;
-        top: -125px;
-        left: -125px;
-    }
+/* Base: Mobile (375px - 599px) - Already styled above */
 
-    .orb-2 {
-        width: 300px;
-        height: 300px;
-        bottom: -150px;
-        right: -150px;
-    }
-
-    .orb-3 {
-        width: 200px;
-        height: 200px;
-    }
-
+/* Tablet & Small Desktop (600px+) */
+@media (min-width: 600px) {
     .nav-links {
-        display: none;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--bg-primary);
-        flex-direction: column;
-        gap: 0;
-        border-bottom: 1px solid var(--border-color);
-        z-index: 999;
-        max-width: 100%;
-    }
-
-    .nav-links.active {
-        display: flex;
+        display: flex !important;
+        position: static;
+        background: none;
+        flex-direction: row;
+        gap: clamp(1rem, 2vw, 1.5rem);
+        border: none;
     }
 
     .nav-link {
-        padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
-        border-bottom: 1px solid var(--border-color);
-        white-space: nowrap;
+        padding: 0;
+        border: none;
     }
 
     .mobile-menu-btn {
-        display: flex;
-    }
-
-    .price-banner {
-        flex-direction: column;
-        gap: var(--spacing-md);
-        padding: clamp(0.5rem, 2vw, 1rem);
-        font-size: 0.85rem;
-        top: 60px;
-    }
-
-    .price-wrapper {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .price-value {
-        font-size: clamp(0.9rem, 2vw, 1.1rem);
-    }
-
-    .hero {
-        padding: clamp(60px, 8vw, 120px) clamp(1rem, 2vw, 1.5rem) clamp(40px, 6vw, 60px);
-        margin-top: 110px;
+        display: none;
     }
 
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 4vw, 2rem);
-    }
-
-    .hero-title {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
-    }
-
-    .hero-subtitle {
-        font-size: clamp(0.95rem, 2vw, 1.1rem);
-        margin-bottom: clamp(1rem, 3vw, 2rem);
-    }
-
-    .hero-visual {
-        min-height: 300px;
-    }
-
-    .hero-cta {
-        justify-content: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: clamp(0.5rem, 2vw, 1rem);
-    }
-
-    .btn {
-        padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 24px);
-        font-size: clamp(0.85rem, 1vw, 0.95rem);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     }
 
     .problem-grid,
     .solution-grid,
     .features-grid {
-        grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: clamp(1rem, 3vw, 1.5rem);
-    }
-
-    .tech-content {
-        grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .faq-grid {
-        grid-template-columns: 1fr;
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    section {
-        padding: clamp(40px, 6vw, 60px) clamp(1rem, 2vw, 1.5rem) !important;
-    }
-
-    .section-title {
-        font-size: clamp(1.5rem, 4vw, 1.8rem);
-    }
-
-    .cta-title {
-        font-size: clamp(1.5rem, 4vw, 2rem);
-    }
-
-    .stat-value {
-        font-size: clamp(1.5rem, 3vw, 2rem);
-    }
-
-    .feature-icon {
-        font-size: clamp(2rem, 4vw, 2.5rem);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 480px) {
-    html, body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* Very small orbs for small screens */
-    .orb-1 {
-        width: 150px;
-        height: 150px;
-        top: -75px;
-        left: -75px;
-    }
-
-    .orb-2 {
-        width: 180px;
-        height: 180px;
-        bottom: -90px;
-        right: -90px;
-    }
-
-    .orb-3 {
-        width: 120px;
-        height: 120px;
-    }
-
-    /* Safe area support for notched devices */
-    .navbar {
-        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
-        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
-    }
-
-    .nav-container {
-        padding: 0 clamp(0.5rem, 2vw, 1rem);
-        height: 60px;
+/* Tablet Landscape (768px+) */
+@media (min-width: 768px) {
+    .nav-links {
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .logo {
-        gap: clamp(0.3rem, 1vw, 0.5rem);
-    }
-
-    .logo-img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .logo-text {
-        font-size: clamp(0.85rem, 2vw, 1rem);
-    }
-
-    .mobile-menu-btn {
-        padding: var(--spacing-sm);
-    }
-
-    .mobile-menu-btn span {
-        width: 20px;
-        height: 2px;
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
     }
 
     .price-banner {
-        top: 60px;
-        padding: 0.5rem clamp(0.5rem, 2vw, 1rem);
-        font-size: 0.8rem;
-    }
-
-    .price-wrapper {
-        gap: clamp(0.3rem, 1vw, 0.8rem);
-    }
-
-    .price-label,
-    .price-value,
-    .price-change {
-        font-size: 0.75rem !important;
+        flex-direction: row;
+        gap: clamp(1rem, 2vw, 2rem);
+        font-size: 0.95rem;
+        top: 70px;
     }
 
     .hero {
-        padding: clamp(50px, 6vw, 100px) clamp(0.75rem, 1.5vw, 1rem) clamp(30px, 4vw, 40px);
-        margin-top: 100px;
+        padding: clamp(100px, 10vw, 150px) clamp(1.5rem, 3vw, 2rem) clamp(60px, 8vw, 100px);
+        margin-top: 130px;
     }
 
     .hero-content {
-        gap: clamp(1rem, 2vw, 1.5rem);
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
     }
 
     .hero-title {
-        font-size: clamp(1.5rem, 4vw, 1.8rem);
-        line-height: 1.3;
+        font-size: clamp(2rem, 5vw, 3.5rem);
     }
 
     .hero-subtitle {
-        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
     }
 
     .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        gap: clamp(0.5rem, 1vw, 1rem);
+        justify-content: flex-start;
     }
 
-    .btn {
-        width: 100%;
-        padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
-        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    .problem-grid,
+    .solution-grid,
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     }
 
-    .btn-primary,
-    .btn-secondary {
-        min-height: 44px;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    .stat-value {
-        font-size: clamp(1.3rem, 3vw, 1.5rem);
-    }
-
-    .stat-label {
-        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .section-title {
-        font-size: clamp(1.3rem, 3.5vw, 1.5rem);
-        line-height: 1.3;
-    }
-
-    .section-subtitle {
-        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-    }
-
-    .feature-icon {
-        font-size: clamp(1.8rem, 3vw, 2rem);
-    }
-
-    .feature-card {
-        padding: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    .card-title {
-        font-size: clamp(0.95rem, 2vw, 1.1rem);
-    }
-
-    .card-description {
-        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
     }
 
     .cta-title {
-        font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
     }
 
-    .cta-actions {
-        flex-direction: column;
-        width: 100%;
+    .stat-value {
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
     }
 
-    .footer-section {
-        text-align: center;
+    .feature-icon {
+        font-size: clamp(2.2rem, 4vw, 2.8rem);
+    }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 0 var(--spacing-xl);
     }
 
-    .footer-section h4 {
-        font-size: clamp(0.9rem, 1.5vw, 1rem);
+    .nav-container {
+        height: 70px;
+        padding: 0 var(--spacing-xl);
     }
 
-    .footer-section a,
-    .footer-section p {
-        font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    .logo {
+        font-size: 1.25rem;
     }
 
-    .footer-bottom p {
-        font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    .logo-img {
+        width: 32px;
+        height: 32px;
     }
 
-    /* Ensure no horizontal scrolling */
-    * {
-        max-width: 100%;
-    }
-
-    .container,
-    section,
     .nav-links {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
+        gap: var(--spacing-xl);
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .price-banner {
+        top: 70px;
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: 0.9rem;
+    }
+
+    .price-wrapper {
+        gap: var(--spacing-lg);
+    }
+
+    .hero {
+        padding: 150px var(--spacing-xl) 100px;
+        margin-top: 150px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+
+    .problem-grid,
+    .solution-grid,
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-2xl);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .section {
+        scroll-margin-top: 180px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+    }
+
+    .feature-icon {
+        font-size: 2.8rem;
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
+        flex-wrap: wrap;
     }
 }
 
@@ -1914,7 +1783,6 @@ html.dark-mode .feature-card {
 
 /* ===== TOUCH DEVICE OPTIMIZATION ===== */
 @media (hover: none) and (pointer: coarse) {
-    /* Remove hover styles on touch devices */
     .btn:hover,
     .nav-link:hover,
     a:hover {
