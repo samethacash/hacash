@@ -1,529 +1,1914 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Hacash">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.coingecko.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;">
-    <meta name="description" content="Hacash - Real-Time Global Cryptocurrency Settlement Network with 1M+ TPS capability">
-    <meta name="keywords" content="Hacash, cryptocurrency, blockchain, payments, settlement, scalability, decentralization">
-    <meta name="theme-color" content="#0066cc">
-    <meta name="author" content="Hacash">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Hacash - Real-Time Cryptocurrency Settlement">
-    <meta property="og:description" content="1M+ TPS, instant settlement, true decentralization">
-    <meta property="og:image" content="logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>Hacash - Real-Time Cryptocurrency Settlement Network</title>
-    <link rel="canonical" href="https://hacashwebsite.com/">
-    <link rel="preload" as="image" href="logo.png">
-    <link rel="preload" as="style" href="styles.css?v=4.3">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="styles.css?v=4.3">
+/* ===== ROOT VARIABLES & DESIGN SYSTEM ===== */
+:root {
+    --primary: #0066cc;
+    --primary-light: #4a90e2;
+    --primary-dark: #003d7a;
+    --secondary: #0088ff;
+    --accent: #00d084;
+    --accent-light: #4ade80;
+    --danger: #ff4757;
+    --warning: #ffa502;
+    --info: #0066cc;
+    
+    --text-primary: #0f1419;
+    --text-secondary: #6c757d;
+    --text-tertiary: #adb5bd;
+    --text-inverse: #ffffff;
+    
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #f0f2f5;
+    --bg-overlay: rgba(0, 0, 0, 0.05);
+    
+    --border-color: #e9ecef;
+    --border-light: #dee2e6;
+    --border-dark: #ced4da;
+    
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.2);
+    
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+}
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8FD7RE2P5G"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8FD7RE2P5G');
-    </script>
-</head>
-<body>
-    <!-- Animated Background Particles -->
-    <div class="particle-container" id="particleContainer"></div>
+html.dark-mode {
+    --text-primary: #f0f2f5;
+    --text-secondary: #adb5bd;
+    --text-tertiary: #6c757d;
+    
+    --bg-primary: #0f1419;
+    --bg-secondary: #1a1f2e;
+    --bg-tertiary: #252d3d;
+    --bg-overlay: rgba(255, 255, 255, 0.05);
+    
+    --border-color: #2d3447;
+    --border-light: #3a4452;
+    --border-dark: #4a5568;
+    
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="/" class="logo" id="logo">
-                <img src="logo.png" alt="Hacash Logo" class="logo-img">
-                <div class="logo-text">HACASH</div>
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#problem" class="nav-link">Problem</a></li>
-                <li><a href="#solution" class="nav-link">Solution</a></li>
-                <li><a href="#stats" class="nav-link">Stats</a></li>
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#technology" class="nav-link">Technology</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="https://hacash.org/whitepaper.pdf" class="nav-link" target="_blank">Whitepaper</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button id="darkModeBtn" class="theme-toggle" aria-label="Toggle dark mode">
-                    <span class="sun-icon">☀️</span>
-                    <span class="moon-icon">🌙</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Price Banner with Real-time Updates -->
-    <div class="price-banner" id="priceBanner">
-        <div class="price-wrapper">
-            <span class="price-label">HAC Price:</span>
-            <span class="price-value" id="hacPrice">Loading...</span>
-            <span class="price-change" id="priceChange"></span>
-            <span class="price-status" id="priceStatus">●</span>
-        </div>
-    </div>
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-    <!-- Hero Section with Parallax -->
-    <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="text-gradient">The Future of Global Payments</span>
-                </h1>
-                <p class="hero-subtitle">Hacash enables <strong>1M+ transactions per second</strong> with instant settlement, true decentralization, and cryptographic security—without sacrificing what makes cryptocurrency valuable.</p>
-                <div class="hero-cta">
-                    <a href="#problem" class="btn btn-primary btn-icon">
-                        <span>Discover How</span>
-                        <span class="arrow">→</span>
-                    </a>
-                    <a href="https://hacash.org/whitepaper.pdf" class="btn btn-secondary" target="_blank">Read Whitepaper</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-graphic" id="heroGraphic">
-                    <div class="network-grid">
-                        <div class="grid-line grid-h"></div>
-                        <div class="grid-line grid-h"></div>
-                        <div class="grid-line grid-v"></div>
-                        <div class="grid-line grid-v"></div>
-                    </div>
-                    <svg class="network-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0066cc;stop-opacity:0.8" />
-                                <stop offset="100%" style="stop-color:#00d084;stop-opacity:0.8" />
-                            </linearGradient>
-                        </defs>
-                        <g class="nodes-group">
-                            <circle cx="200" cy="200" r="8" class="node node-center" fill="url(#nodeGradient)"/>
-                            <circle cx="100" cy="100" r="6" class="node node-1" fill="url(#nodeGradient)"/>
-                            <circle cx="300" cy="100" r="6" class="node node-2" fill="url(#nodeGradient)"/>
-                            <circle cx="100" cy="300" r="6" class="node node-3" fill="url(#nodeGradient)"/>
-                            <circle cx="300" cy="300" r="6" class="node node-4" fill="url(#nodeGradient)"/>
-                        </g>
-                        <g class="connections-group">
-                            <line x1="200" y1="200" x2="100" y2="100" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
-                            <line x1="200" y1="200" x2="300" y2="100" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
-                            <line x1="200" y1="200" x2="100" y2="300" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
-                            <line x1="200" y1="200" x2="300" y2="300" stroke="#0066cc" stroke-width="1.5" opacity="0.4"/>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color var(--transition), color var(--transition);
+    line-height: 1.6;
+    font-size: clamp(14px, 2vw, 16px);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
 
-    <!-- Problem Section -->
-    <section id="problem" class="problem-section section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">The Problem with Today's Payments</h2>
-                <p class="section-subtitle">Fundamental limitations that cryptocurrency promised to solve</p>
-            </div>
-            <div class="problem-grid">
-                <div class="problem-card" data-delay="0">
-                    <div class="card-number">01</div>
-                    <div class="card-content">
-                        <h3>Throughput Limits</h3>
-                        <p>Bitcoin: 7 TPS. Visa: 65,000+ TPS. Yet crypto claims to revolutionize global payments. The math doesn't work.</p>
-                    </div>
-                    <div class="card-accent"></div>
-                </div>
-                <div class="problem-card" data-delay="1">
-                    <div class="card-number">02</div>
-                    <div class="card-content">
-                        <h3>Centralization Risk</h3>
-                        <p>Payment channels create hub-and-spoke networks. Large hubs become the new banks. We solved decentralization on Layer 1, only to recreate it on Layer 2.</p>
-                    </div>
-                    <div class="card-accent"></div>
-                </div>
-                <div class="problem-card" data-delay="2">
-                    <div class="card-number">03</div>
-                    <div class="card-content">
-                        <h3>Settlement Friction</h3>
-                        <p>Traditional finance takes days. Crypto often takes hours or minutes. Global commerce needs sub-second settlement with zero counterparty risk.</p>
-                    </div>
-                    <div class="card-accent"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Ensure all containers respect viewport width */
+main, section, article, .container, .nav-container, .hero-content, .price-wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
 
-    <!-- Solution Section -->
-    <section id="solution" class="solution-section section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">The Hacash Solution</h2>
-                <p class="section-subtitle">Designed for commerce from day one</p>
-            </div>
-            <div class="solution-grid">
-                <div class="solution-card" data-delay="0">
-                    <div class="solution-icon">⚡</div>
-                    <h3>Infinite Scalability</h3>
-                    <p>Channel chains achieve 1M+ TPS through parallel payment channels with atomic settlement. No consensus bottleneck.</p>
-                    <div class="card-link">Learn more →</div>
-                </div>
-                <div class="solution-card" data-delay="1">
-                    <div class="solution-icon">🕸️</div>
-                    <h3>Forced Decentralization</h3>
-                    <p>Technical design prevents hub centralization through locking periods and immediate settlement. Economics enforce decentralization.</p>
-                    <div class="card-link">Learn more →</div>
-                </div>
-                <div class="solution-card" data-delay="2">
-                    <div class="solution-icon">🔐</div>
-                    <h3>Cryptographic Certainty</h3>
-                    <p>Game-theoretic security means dishonesty costs 100% of locked funds. Rules, not trust, ensure settlement finality.</p>
-                    <div class="card-link">Learn more →</div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Global text wrapping rules */
+h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
 
-    <!-- Stats Section with Animated Counters -->
-    <section id="stats" class="stats-section section">
-        <div class="stats-background"></div>
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">The Numbers</h2>
-                <p class="section-subtitle">Performance metrics that speak for themselves</p>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-item" data-value="1000000" data-label="TPS">
-                    <div class="stat-value" id="stat-1">1M+</div>
-                    <div class="stat-label">Transactions/Second</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 100%"></div>
-                    </div>
-                </div>
-                <div class="stat-item" data-value="0.001" data-label="%">
-                    <div class="stat-value" id="stat-2">&lt;0.1%</div>
-                    <div class="stat-label">Transaction Fees</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 99%"></div>
-                    </div>
-                </div>
-                <div class="stat-item" data-value="0" data-label="ms">
-                    <div class="stat-value" id="stat-3">Instant</div>
-                    <div class="stat-label">Settlement Time</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 100%"></div>
-                    </div>
-                </div>
-                <div class="stat-item" data-value="100" data-label="%">
-                    <div class="stat-value" id="stat-4">100%</div>
-                    <div class="stat-label">Decentralized</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 100%"></div>
-                    </div>
-                </div>
-                <div class="stat-item" data-value="22000000" data-label="coins">
-                    <div class="stat-value" id="stat-5">22M</div>
-                    <div class="stat-label">Total Supply</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 87%"></div>
-                    </div>
-                </div>
-                <div class="stat-item" data-value="315" data-label="%">
-                    <div class="stat-value" id="stat-6">315%</div>
-                    <div class="stat-label">Node Annual Return</div>
-                    <div class="stat-bar">
-                        <div class="stat-progress" style="width: 100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+p, span, a, li, td {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
 
-    <!-- Features Section -->
-    <section id="features" class="features-section section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Enterprise Architecture</h2>
-                <p class="section-subtitle">Built for the demands of global commerce</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card" data-delay="0">
-                    <div class="feature-icon">👥</div>
-                    <h3>Multi-Signature Accounts</h3>
-                    <p>Support for up to 200 private keys managing a single address. Enable joint custody, escrow, and complex approval workflows.</p>
-                    <div class="feature-meta">Up to 200 keys</div>
-                </div>
-                <div class="feature-card" data-delay="1">
-                    <div class="feature-icon">🏢</div>
-                    <h3>Hierarchical Equity Control</h3>
-                    <p>Corporate structures with voting rights, beneficiary designation, and dynamic management. Fixed addresses through organizational changes.</p>
-                    <div class="feature-meta">Voting enabled</div>
-                </div>
-                <div class="feature-card" data-delay="2">
-                    <div class="feature-icon">⚛️</div>
-                    <h3>Atomic Transactions</h3>
-                    <p>Multi-party transactions execute simultaneously or fail completely. Eliminates settlement risk and intermediate states.</p>
-                    <div class="feature-meta">All-or-nothing</div>
-                </div>
-                <div class="feature-card" data-delay="3">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Settlement</h3>
-                    <p>Funds transfer across all parties in milliseconds. Finality guaranteed by cryptographic proof and punitive mechanisms.</p>
-                    <div class="feature-meta">Instant finality</div>
-                </div>
-                <div class="feature-card" data-delay="4">
-                    <div class="feature-icon">💳</div>
-                    <h3>Payment Flexibility</h3>
-                    <p>Self-pay, payment requests, delegated payments, and equity operations. Adapts to diverse financial structures.</p>
-                    <div class="feature-meta">Multi-mode</div>
-                </div>
-                <div class="feature-card" data-delay="5">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy Mechanisms</h3>
-                    <p>Payment mixing, deferred settlement, encrypted channels. Balance privacy with auditability for compliance.</p>
-                    <div class="feature-meta">Encrypted</div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Touch optimization for interactive elements */
+button, a, input, [role="button"], [role="link"] {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
 
-    <!-- Technology Section -->
-    <section id="technology" class="tech-section section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Channel chain architecture explained</p>
-            </div>
-            <div class="tech-content">
-                <div class="tech-text">
-                    <h3>Channel Chain Architecture</h3>
-                    <p>Two parties lock funds in a payment channel. Transactions occur off-chain instantly. Only final settlement broadcasts to main network.</p>
-                    <ul class="tech-list">
-                        <li>
-                            <span class="tech-icon">✓</span>
-                            <div>
-                                <strong>Off-Chain Settlement:</strong> Unlimited private transactions between parties
-                            </div>
-                        </li>
-                        <li>
-                            <span class="tech-icon">✓</span>
-                            <div>
-                                <strong>Sequential Signing:</strong> Multi-step protocol ensuring fund security
-                            </div>
-                        </li>
-                        <li>
-                            <span class="tech-icon">✓</span>
-                            <div>
-                                <strong>Atomic Operations:</strong> All-or-nothing settlement preventing partial transfers
-                            </div>
-                        </li>
-                        <li>
-                            <span class="tech-icon">✓</span>
-                            <div>
-                                <strong>Punitive Measures:</strong> Dishonest parties lose all locked funds
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tech-visual">
-                    <div class="channel-diagram">
-                        <div class="channel-flow">
-                            <div class="flow-step active" data-step="1">
-                                <div class="step-circle">1</div>
-                                <p>Route<br/>Discovery</p>
-                            </div>
-                            <div class="flow-connector">
-                                <div class="connector-line"></div>
-                            </div>
-                            <div class="flow-step" data-step="2">
-                                <div class="step-circle">2</div>
-                                <p>Build<br/>Transaction</p>
-                            </div>
-                            <div class="flow-connector">
-                                <div class="connector-line"></div>
-                            </div>
-                            <div class="flow-step" data-step="3">
-                                <div class="step-circle">3</div>
-                                <p>Sequential<br/>Signing</p>
-                            </div>
-                            <div class="flow-connector">
-                                <div class="connector-line"></div>
-                            </div>
-                            <div class="flow-step" data-step="4">
-                                <div class="step-circle">4</div>
-                                <p>Instant<br/>Settlement</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Fix potential horizontal scrolling */
+img, video, embed, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq-section section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about Hacash</p>
-            </div>
-            <div class="faq-grid">
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>How is Hacash different from Bitcoin?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p><strong>Bitcoin:</strong> 7 TPS, 10-minute blocks, fixed 21M supply, no scaling.</p>
-                        <p><strong>Hacash:</strong> 1M+ TPS, instant settlement, 22M supply with rules-based issuance, designed for commerce from day one.</p>
-                    </div>
-                </details>
+/* Prevent text from overflowing */
+pre, code, textarea {
+    overflow-x: auto;
+    max-width: 100%;
+}
 
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>Isn't this just Lightning Network?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p><strong>Lightning:</strong> Hub-and-spoke topology, channels lock funds in pairs, concentration risk.</p>
-                        <p><strong>Hacash:</strong> Mesh topology, channels support parallel flows, forced decentralization, atomic multi-channel payments.</p>
-                    </div>
-                </details>
+/* ===== PARTICLE BACKGROUND ===== */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
 
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>How does security work without on-chain finality?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>Hacash uses game theory: dishonesty costs 100% of locked funds. Atomic settlements mean all parties receive/disburse simultaneously—no intermediate states where someone wins while another loses.</p>
-                    </div>
-                </details>
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float-particle linear infinite;
+}
 
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>What if a channel operator goes offline?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>You can unilaterally close the channel and broadcast your latest signed balance to the main network. Penalties exist to discourage this, but you never lose funds. With thousands of operators, finding alternative routes is trivial.</p>
-                    </div>
-                </details>
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
 
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>Who controls Hacash?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p>No one and everyone. Thousands of independent nodes run the network. Code is open source. Currency issuance follows algorithmic rules—not controlled by corporations or governments.</p>
-                    </div>
-                </details>
+/* ===== NAVIGATION ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px) saturate(180%);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: background var(--transition), box-shadow var(--transition);
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
 
-                <details class="faq-item">
-                    <summary class="faq-question">
-                        <span>How do I earn by running a node?</span>
-                        <span class="faq-toggle">+</span>
-                    </summary>
-                    <div class="faq-answer">
-                        <p><strong>Channel Fees:</strong> Charge 0.1-1% per transaction routed. <strong>Channel Interest:</strong> 0.1% compound every 34 days on locked funds (~1.056% annual). <strong>Mining Rewards:</strong> Compete for block rewards.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
+html.dark-mode .navbar {
+    background: rgba(15, 20, 25, 0.95);
+}
 
-    <!-- CTA Section -->
-    <section class="cta-section section">
-        <div class="cta-background">
-            <div class="cta-gradient"></div>
-            <div class="cta-particles"></div>
-        </div>
-        <div class="section-container">
-            <h2 class="cta-title">Ready to Transform<br/>Global Payments?</h2>
-            <p class="cta-subtitle">Read the complete whitepaper and understand how Hacash achieves infinite scalability while maintaining true decentralization and cryptographic security.</p>
-            <div class="cta-actions">
-                <a href="https://hacash.org/whitepaper.pdf" class="btn btn-primary btn-large" target="_blank">
-                    <span>Download Whitepaper</span>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="#" class="btn btn-secondary" id="ctaSecondary">Join Community</a>
-            </div>
-        </div>
-    </section>
+.navbar.scrolled {
+    box-shadow: var(--shadow-md);
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="Hacash" class="footer-logo-img">
-                        <span>HACASH</span>
-                    </div>
-                    <p>A cryptocurrency system designed for large-scale payments and instant settlement with infinite scalability.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#problem">Problem</a></li>
-                        <li><a href="#solution">Solution</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://hacash.org/whitepaper.pdf" target="_blank">Whitepaper</a></li>
-                        <li><a href="https://github.com/hacash" target="_blank">GitHub</a></li>
-                        <li><a href="https://hacash.org" target="_blank">Official Site</a></li>
-                        <li><a href="https://t.me/hacash" target="_blank">Community</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Network</h4>
-                    <ul>
-                        <li><a href="#">Mainnet</a></li>
-                        <li><a href="#">Testnet</a></li>
-                        <li><a href="#">Nodes</a></li>
-                        <li><a href="#">Explorers</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-divider"></div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Hacash Documentation. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Disclaimer</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: clamp(56px, 12vw, 70px);
+}
 
-    <script defer src="script.js?v=4.3"></script>
-</body>
-</html>
+.logo {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.3rem, 1vw, 0.5rem);
+    font-weight: 700;
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
+    object-fit: contain;
+}
+
+.logo-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    gap: clamp(0.5rem, 1.5vw, 1.5rem);
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    position: absolute;
+    top: clamp(56px, 12vw, 70px);
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    z-index: 999;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    transition: color var(--transition-fast);
+    position: relative;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) 0;
+    display: block;
+    word-break: break-word;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: var(--spacing-sm);
+    transition: transform var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    background: var(--bg-tertiary);
+}
+
+.sun-icon, .moon-icon {
+    display: inline-block;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+html.dark-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+    position: absolute;
+}
+
+html.dark-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+html:not(.dark-mode) .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+    position: absolute;
+}
+
+/* ===== MOBILE MENU BUTTON ===== */
+.mobile-menu-btn {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem);
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 2.5px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ===== PRICE BANNER ===== */
+.price-banner {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 2rem);
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    z-index: 999;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 44px;
+}
+
+.price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    flex-wrap: nowrap;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.price-label {
+    opacity: 0.9;
+}
+
+.price-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.price-change {
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.price-change.positive {
+    background: rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+}
+
+.price-change.negative {
+    background: rgba(255, 71, 87, 0.3);
+    color: #ff4757;
+}
+
+.price-status {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse-status 2s ease-in-out infinite;
+    margin-left: 8px;
+}
+
+@keyframes pulse-status {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    padding: 0 clamp(1rem, 3vw, 2rem) 0;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: orb-float 15s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    bottom: -200px;
+    right: -200px;
+    animation-delay: 5s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    top: 50%;
+    right: 10%;
+    animation-delay: 10s;
+}
+
+@keyframes orb-float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    33% {
+        transform: translate(30px, -50px);
+    }
+    66% {
+        transform: translate(-20px, 30px);
+    }
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-text h1 {
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+    letter-spacing: -0.5px;
+    animation: text-fade-in 0.8s ease-out;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+}
+
+@keyframes text-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    color: var(--text-secondary);
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+    line-height: 1.6;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.3rem, 1vw, 0.5rem);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 24px);
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    border-radius: var(--radius);
+}
+
+.btn-primary:hover::after {
+    opacity: 1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    gap: 8px;
+}
+
+.btn-large {
+    padding: 16px 32px;
+    font-size: 1.05rem;
+}
+
+.arrow {
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover .arrow {
+    transform: translateX(4px);
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+    top: var(--ripple-top, 0);
+    left: var(--ripple-left, 0);
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ===== HERO VISUAL ===== */
+.hero-visual {
+    position: relative;
+    height: 100%;
+    min-height: clamp(300px, 50vw, 500px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-graphic {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: clamp(250px, 40vw, 400px);
+    max-width: 100%;
+}
+
+.network-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+}
+
+.grid-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+.grid-h {
+    width: 100%;
+    height: 1px;
+    top: 25%;
+}
+
+.grid-h:nth-child(2) {
+    top: 75%;
+}
+
+.grid-v {
+    height: 100%;
+    width: 1px;
+    left: 25%;
+}
+
+.grid-v:nth-child(4) {
+    left: 75%;
+}
+
+.network-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.node {
+    transition: r var(--transition-fast);
+    filter: drop-shadow(0 0 12px rgba(0, 102, 204, 0.5));
+}
+
+.node:hover {
+    r: 10;
+    filter: drop-shadow(0 0 24px rgba(0, 102, 204, 0.8));
+}
+
+.node-center {
+    animation: pulse-node 2s ease-in-out infinite;
+}
+
+@keyframes pulse-node {
+    0%, 100% {
+        r: 8;
+        filter: drop-shadow(0 0 12px rgba(0, 102, 204, 0.5));
+    }
+    50% {
+        r: 10;
+        filter: drop-shadow(0 0 24px rgba(0, 102, 204, 0.8));
+    }
+}
+
+.node-1, .node-2, .node-3, .node-4 {
+    animation: float-node 4s ease-in-out infinite;
+}
+
+.node-1 { animation-delay: 0s; }
+.node-2 { animation-delay: 1s; }
+.node-3 { animation-delay: 2s; }
+.node-4 { animation-delay: 3s; }
+
+@keyframes float-node {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, -20px);
+    }
+}
+
+/* ===== ADVANCED MORPHING EFFECT ===== */
+@keyframes morph {
+    0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+/* ===== FLOATING ELEMENTS ===== */
+@keyframes float-slow {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+@keyframes float-medium {
+    0%, 100% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 102, 204, 0.8);
+    }
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    scroll-margin-top: 180px;
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.section-subtitle {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    word-break: break-word;
+}
+
+/* ===== PROBLEM SECTION ===== */
+.problem-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    position: relative;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+}
+
+.problem-card {
+    background: var(--bg-primary);
+    padding: clamp(0.75rem, 3vw, 3rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: slide-in-up 0.6s ease-out forwards;
+}
+
+.problem-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 102, 204, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+}
+
+.problem-card:hover::after {
+    opacity: 1;
+}
+
+.problem-card:nth-child(1) { animation-delay: 0.1s; }
+.problem-card:nth-child(2) { animation-delay: 0.2s; }
+.problem-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.problem-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+}
+
+.card-number {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.2;
+}
+
+.card-content h3 {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    word-break: break-word;
+}
+
+.card-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 0 3px 3px 0;
+}
+
+/* ===== SOLUTION SECTION ===== */
+.solution-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+}
+
+.solution-card {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 208, 132, 0.05));
+    padding: clamp(0.75rem, 3vw, 3rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all var(--transition);
+    position: relative;
+    opacity: 0;
+    animation: slide-in-up 0.6s ease-out forwards;
+}
+
+.solution-card:nth-child(1) { animation-delay: 0.1s; }
+.solution-card:nth-child(2) { animation-delay: 0.2s; }
+.solution-card:nth-child(3) { animation-delay: 0.3s; }
+
+.solution-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 208, 132, 0.1));
+}
+
+.solution-icon {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--spacing-lg);
+    display: block;
+    animation: icon-float 3s ease-in-out infinite;
+}
+
+.solution-icon { animation-delay: 0s; }
+.solution-card:nth-child(2) .solution-icon { animation-delay: 0.5s; }
+.solution-card:nth-child(3) .solution-icon { animation-delay: 1s; }
+
+@keyframes icon-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.solution-card h3 {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    word-break: break-word;
+}
+
+.solution-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.card-link {
+    color: var(--primary);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.solution-card:hover .card-link {
+    transform: translateX(4px);
+}
+
+/* ===== STATS SECTION ===== */
+.stats-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    text-align: center;
+    padding: clamp(1rem, 2.5vw, 2rem);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition);
+    opacity: 0;
+    animation: stat-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.stat-item:nth-child(1) { animation-delay: 0.1s; }
+.stat-item:nth-child(2) { animation-delay: 0.2s; }
+.stat-item:nth-child(3) { animation-delay: 0.3s; }
+.stat-item:nth-child(4) { animation-delay: 0.4s; }
+.stat-item:nth-child(5) { animation-delay: 0.5s; }
+.stat-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes stat-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.stat-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 208, 132, 0.05));
+}
+
+.stat-value {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.stat-label {
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    word-break: break-word;
+}
+
+.stat-bar {
+    background: var(--bg-tertiary);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: var(--spacing-md);
+}
+
+.stat-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+    animation: progress-fill 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+}
+
+.stat-item:nth-child(1) .stat-progress { animation-delay: 0.2s; }
+.stat-item:nth-child(2) .stat-progress { animation-delay: 0.3s; }
+.stat-item:nth-child(3) .stat-progress { animation-delay: 0.4s; }
+.stat-item:nth-child(4) .stat-progress { animation-delay: 0.5s; }
+.stat-item:nth-child(5) .stat-progress { animation-delay: 0.6s; }
+.stat-item:nth-child(6) .stat-progress { animation-delay: 0.7s; }
+
+@keyframes progress-fill {
+    from {
+        width: 0 !important;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== FEATURES SECTION ===== */
+.features-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    position: relative;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+}
+
+.feature-card {
+    background: var(--bg-primary);
+    padding: clamp(0.75rem, 3vw, 3rem);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: slide-in-up 0.6s ease-out forwards;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+html.dark-mode .feature-card {
+    background: rgba(15, 20, 25, 0.8);
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.05s; }
+.feature-card:nth-child(2) { animation-delay: 0.15s; }
+.feature-card:nth-child(3) { animation-delay: 0.25s; }
+.feature-card:nth-child(4) { animation-delay: 0.35s; }
+.feature-card:nth-child(5) { animation-delay: 0.45s; }
+.feature-card:nth-child(6) { animation-delay: 0.55s; }
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.1), transparent);
+    transition: all var(--transition);
+    z-index: 1;
+}
+
+.feature-card:hover::before {
+    top: -50%;
+    right: -50%;
+}
+
+.feature-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+}
+
+.feature-icon {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-lg);
+    display: block;
+    transition: transform var(--transition-fast);
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.feature-card h3 {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    position: relative;
+    z-index: 2;
+    word-break: break-word;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 2;
+}
+
+.feature-meta {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== TECHNOLOGY SECTION ===== */
+.tech-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+}
+
+.tech-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+}
+
+.tech-text h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    word-break: break-word;
+}
+
+.tech-text p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.tech-list {
+    list-style: none;
+}
+
+.tech-list li {
+    display: flex;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    margin-bottom: var(--spacing-lg);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--accent);
+    transition: all var(--transition);
+    flex-wrap: wrap;
+}
+
+.tech-list li:hover {
+    border-left-color: var(--primary);
+    background: var(--bg-tertiary);
+}
+
+.tech-icon {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    flex-shrink: 0;
+}
+
+.tech-list strong {
+    color: var(--text-primary);
+}
+
+/* ===== CHANNEL DIAGRAM ===== */
+.channel-diagram {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(0, 208, 132, 0.05));
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.channel-flow {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flow-step {
+    text-align: center;
+    opacity: 0.5;
+    transition: all var(--transition);
+}
+
+.flow-step.active {
+    opacity: 1;
+}
+
+.flow-step:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.step-circle {
+    width: clamp(50px, 12vw, 70px);
+    height: clamp(50px, 12vw, 70px);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin: 0 auto clamp(0.5rem, 2vw, 1rem);
+    transition: all var(--transition);
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.flow-step:hover .step-circle {
+    transform: scale(1.15);
+    box-shadow: var(--shadow-lg);
+}
+
+.flow-step p {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    color: var(--text-secondary);
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 120px;
+}
+
+.flow-connector {
+    display: flex;
+    align-items: center;
+    opacity: 0.3;
+    width: 2px;
+    height: clamp(30px, 8vw, 80px);
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.connector-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    position: relative;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(1rem, 3vw, 3rem);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.faq-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.faq-question {
+    width: 100%;
+    padding: clamp(0.75rem, 2vw, 1rem);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color var(--transition-fast);
+    word-break: break-word;
+}
+
+.faq-question:hover {
+    color: var(--primary);
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    transition: transform var(--transition);
+    flex-shrink: 0;
+}
+
+.faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 clamp(0.75rem, 2vw, 1.5rem) clamp(0.75rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    animation: slide-in-up 0.3s ease-out;
+    word-break: break-word;
+}
+
+.faq-answer p {
+    margin-bottom: var(--spacing-md);
+}
+
+.faq-answer strong {
+    color: var(--text-primary);
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    padding: clamp(50px, 10vw, 100px) clamp(1rem, 3vw, 2rem);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.cta-section:hover {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.02), rgba(0, 208, 132, 0.02));
+}
+
+.cta-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.cta-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+    opacity: 0.1;
+}
+
+.cta-particles {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 102, 204, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 208, 132, 0.3) 0%, transparent 50%);
+    animation: particle-pulse 8s ease-in-out infinite;
+}
+
+@keyframes particle-pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.cta-title {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+    position: relative;
+    z-index: 1;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.cta-subtitle {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto clamp(1rem, 2vw, 2rem);
+    position: relative;
+    z-index: 1;
+    word-break: break-word;
+}
+
+.cta-actions {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem) clamp(40px, 8vw, 80px);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-bottom: clamp(1rem, 3vw, 3rem);
+}
+
+.footer-section h4 {
+    font-size: clamp(0.95rem, 1.5vw, 1rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    word-break: break-word;
+}
+    color: var(--text-primary);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.footer-section a:hover {
+    color: var(--primary);
+}
+
+.footer-section p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.footer-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.footer-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    transition: color var(--transition-fast);
+    word-break: break-word;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
+
+/* Base: Mobile (375px - 599px) - Already styled above */
+
+/* Tablet & Small Desktop (600px+) */
+@media (min-width: 600px) {
+    .nav-links {
+        display: flex !important;
+        position: static;
+        background: none;
+        flex-direction: row;
+        gap: clamp(1rem, 2vw, 1.5rem);
+        border: none;
+        padding: 0;
+    }
+
+    .nav-link {
+        padding: 0;
+        border: none;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr;
+    }
+
+    .channel-flow {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    }
+
+    .problem-grid,
+    .solution-grid,
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet Landscape (768px+) */
+@media (min-width: 768px) {
+    .nav-links {
+        gap: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .logo {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+    }
+
+    .price-banner {
+        flex-direction: row;
+        gap: clamp(1rem, 2vw, 2rem);
+        font-size: 0.95rem;
+        top: 70px;
+    }
+
+    .hero {
+        padding: clamp(100px, 10vw, 150px) clamp(1.5rem, 3vw, 2rem) clamp(60px, 8vw, 100px);
+        margin-top: 130px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .channel-flow {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .flow-connector {
+        width: clamp(40px, 10vw, 100px);
+        height: 2px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
+    }
+
+    .problem-grid,
+    .solution-grid,
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+
+    .cta-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .stat-value {
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+    }
+
+    .feature-icon {
+        font-size: clamp(2.2rem, 4vw, 2.8rem);
+    }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+    .navbar {
+        padding: 0 var(--spacing-xl);
+    }
+
+    .nav-container {
+        height: 70px;
+        padding: 0 var(--spacing-xl);
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-links {
+        gap: var(--spacing-xl);
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .price-banner {
+        top: 70px;
+        padding: var(--spacing-md) var(--spacing-xl);
+        font-size: 0.9rem;
+    }
+
+    .price-wrapper {
+        gap: var(--spacing-lg);
+    }
+
+    .hero {
+        padding: 10px var(--spacing-xl) 5px;
+        margin-top: 45px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .hero-visual {
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+    .channel-flow {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .flow-connector {
+        width: clamp(40px, 10vw, 100px);
+        height: 2px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+
+    .problem-grid,
+    .solution-grid,
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-2xl);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-2xl);
+    }
+
+    .section {
+        scroll-margin-top: 180px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+    }
+
+    .feature-icon {
+        font-size: 2.8rem;
+    }
+
+    .hero-cta {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+/* ===== ANIMATIONS & ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATION ===== */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover,
+    .nav-link:hover,
+    a:hover {
+        transform: none;
+    }
+
+    .btn:active,
+    .nav-link:active,
+    a:active {
+        opacity: 0.8;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .navbar,
+    .price-banner,
+    .particle-container,
+    .cta-actions {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}
