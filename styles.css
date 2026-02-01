@@ -232,11 +232,24 @@ html.dark-mode .navbar {
 }
 
 .nav-links {
-    display: flex;
+    display: none;
     list-style: none;
-    gap: var(--spacing-xl);
+    gap: clamp(0.5rem, 1.5vw, 1.5rem);
     margin: 0;
     padding: 0;
+    flex-direction: column;
+    position: absolute;
+    top: clamp(56px, 12vw, 70px);
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: clamp(0.5rem, 2vw, 1rem);
+    z-index: 999;
+}
+
+.nav-links.active {
+    display: flex;
 }
 
 .nav-link {
@@ -246,6 +259,9 @@ html.dark-mode .navbar {
     font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     transition: color var(--transition-fast);
     position: relative;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) 0;
+    display: block;
+    word-break: break-word;
 }
 
 .nav-link::after {
@@ -319,13 +335,13 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== MOBILE MENU BUTTON ===== */
 .mobile-menu-btn {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: none;
     border: none;
     cursor: pointer;
     gap: 5px;
-    padding: var(--spacing-md);
+    padding: clamp(0.5rem, 1.5vw, 0.75rem);
     min-width: 44px;
     min-height: 44px;
     width: 44px;
@@ -361,7 +377,7 @@ html:not(.dark-mode) .moon-icon {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 2rem);
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     z-index: 999;
     font-weight: 600;
     display: flex;
@@ -369,15 +385,18 @@ html:not(.dark-mode) .moon-icon {
     align-items: center;
     box-shadow: var(--shadow-md);
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 44px;
 }
 
 .price-wrapper {
     display: flex;
     align-items: center;
-    gap: clamp(0.5rem, 2vw, 1.5rem);
-    flex-wrap: wrap;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    flex-wrap: nowrap;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .price-label {
@@ -498,7 +517,7 @@ html:not(.dark-mode) .moon-icon {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
     position: relative;
@@ -507,16 +526,17 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-text h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: var(--spacing-xl);
-    letter-spacing: -1px;
+    line-height: 1.3;
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+    letter-spacing: -0.5px;
     animation: text-fade-in 0.8s ease-out;
     word-break: break-word;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    white-space: normal;
 }
 
 @keyframes text-fade-in {
@@ -538,9 +558,9 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-subtitle {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     color: var(--text-secondary);
-    margin-bottom: clamp(1rem, 3vw, 3rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
     line-height: 1.8;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -650,14 +670,18 @@ html:not(.dark-mode) .moon-icon {
 .hero-visual {
     position: relative;
     height: 100%;
-    min-height: 500px;
+    min-height: clamp(300px, 50vw, 500px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-graphic {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    min-height: clamp(250px, 40vw, 400px);
+    max-width: 100%;
 }
 
 .network-grid {
@@ -790,21 +814,23 @@ html:not(.dark-mode) .moon-icon {
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .section-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
     font-weight: 800;
     margin-bottom: var(--spacing-lg);
-    line-height: 1.2;
+    line-height: 1.3;
+    word-break: break-word;
 }
 
 .section-subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
+    word-break: break-word;
 }
 
 /* ===== PROBLEM SECTION ===== */
@@ -868,7 +894,7 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .card-number {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw, 3rem);
     font-weight: 800;
     color: var(--primary);
     margin-bottom: var(--spacing-lg);
@@ -876,9 +902,10 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .card-content h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
     margin-bottom: var(--spacing-md);
     color: var(--text-primary);
+    word-break: break-word;
 }
 
 .card-content p {
@@ -931,7 +958,7 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .solution-icon {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     margin-bottom: var(--spacing-lg);
     display: block;
     animation: icon-float 3s ease-in-out infinite;
@@ -951,9 +978,10 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .solution-card h3 {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
     margin-bottom: var(--spacing-md);
     color: var(--text-primary);
+    word-break: break-word;
 }
 
 .solution-card p {
@@ -997,7 +1025,7 @@ html:not(.dark-mode) .moon-icon {
 
 .stat-item {
     text-align: center;
-    padding: var(--spacing-2xl);
+    padding: clamp(1rem, 2.5vw, 2rem);
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
@@ -1032,17 +1060,18 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .stat-value {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     color: var(--primary);
     margin-bottom: var(--spacing-md);
 }
 
 .stat-label {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     color: var(--text-secondary);
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
+    word-break: break-word;
 }
 
 .stat-bar {
@@ -1140,7 +1169,7 @@ html.dark-mode .feature-card {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: var(--spacing-lg);
     display: block;
     transition: transform var(--transition-fast);
@@ -1153,11 +1182,12 @@ html.dark-mode .feature-card {
 }
 
 .feature-card h3 {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     margin-bottom: var(--spacing-md);
     color: var(--text-primary);
     position: relative;
     z-index: 2;
+    word-break: break-word;
 }
 
 .feature-card p {
@@ -1183,15 +1213,16 @@ html.dark-mode .feature-card {
 
 .tech-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
 }
 
 .tech-text h3 {
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     margin-bottom: var(--spacing-lg);
     color: var(--text-primary);
+    word-break: break-word;
 }
 
 .tech-text p {
@@ -1206,13 +1237,14 @@ html.dark-mode .feature-card {
 
 .tech-list li {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
     margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-lg);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
     background: var(--bg-secondary);
     border-radius: var(--radius);
     border-left: 3px solid var(--accent);
     transition: all var(--transition);
+    flex-wrap: wrap;
 }
 
 .tech-list li:hover {
@@ -1223,7 +1255,7 @@ html.dark-mode .feature-card {
 .tech-icon {
     color: var(--accent);
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
     flex-shrink: 0;
 }
 
@@ -1246,8 +1278,8 @@ html.dark-mode .feature-card {
 .channel-flow {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
-    flex-wrap: wrap;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -1267,8 +1299,8 @@ html.dark-mode .feature-card {
 }
 
 .step-circle {
-    width: 60px;
-    height: 60px;
+    width: clamp(50px, 12vw, 70px);
+    height: clamp(50px, 12vw, 70px);
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     border-radius: 50%;
@@ -1276,10 +1308,11 @@ html.dark-mode .feature-card {
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 1.5rem;
-    margin: 0 auto var(--spacing-md);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin: 0 auto clamp(0.5rem, 2vw, 1rem);
     transition: all var(--transition);
     box-shadow: var(--shadow-md);
+    flex-shrink: 0;
 }
 
 .flow-step:hover .step-circle {
@@ -1288,15 +1321,20 @@ html.dark-mode .feature-card {
 }
 
 .flow-step p {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     color: var(--text-secondary);
     font-weight: 600;
+    line-height: 1.4;
+    max-width: 120px;
 }
 
 .flow-connector {
     display: flex;
     align-items: center;
     opacity: 0.3;
+    width: 2px;
+    height: clamp(30px, 8vw, 80px);
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
 }
 
 .connector-line {
@@ -1336,18 +1374,19 @@ html.dark-mode .feature-card {
 
 .faq-question {
     width: 100%;
-    padding: var(--spacing-lg);
+    padding: clamp(0.75rem, 2vw, 1rem);
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: var(--spacing-md);
-    font-size: 1rem;
+    align-items: flex-start;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     font-weight: 600;
     color: var(--text-primary);
     transition: color var(--transition-fast);
+    word-break: break-word;
 }
 
 .faq-question:hover {
@@ -1367,10 +1406,11 @@ html.dark-mode .feature-card {
 }
 
 .faq-answer {
-    padding: 0 var(--spacing-lg) var(--spacing-lg);
+    padding: 0 clamp(0.75rem, 2vw, 1.5rem) clamp(0.75rem, 2vw, 1.5rem);
     color: var(--text-secondary);
     line-height: 1.8;
     animation: slide-in-up 0.3s ease-out;
+    word-break: break-word;
 }
 
 .faq-answer p {
@@ -1426,21 +1466,23 @@ html.dark-mode .feature-card {
 }
 
 .cta-title {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
     font-weight: 800;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: clamp(1rem, 2vw, 2rem);
     position: relative;
     z-index: 1;
-    line-height: 1.3;
+    line-height: 1.4;
+    word-break: break-word;
 }
 
 .cta-subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 auto var(--spacing-2xl);
+    margin: 0 auto clamp(1rem, 2vw, 2rem);
     position: relative;
     z-index: 1;
+    word-break: break-word;
 }
 
 .cta-actions {
@@ -1472,9 +1514,12 @@ html.dark-mode .feature-card {
 }
 
 .footer-section h4 {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 1.5vw, 1rem);
     font-weight: 700;
     margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    word-break: break-word;
+}
     color: var(--text-primary);
 }
 
@@ -1489,11 +1534,11 @@ html.dark-mode .feature-card {
     display: block;
     margin-bottom: var(--spacing-sm);
     font-size: 0.95rem;
+    word-break: break-word;
 }
 
 .footer-section a:hover {
     color: var(--primary);
-    transform: translateX(4px);
 }
 
 .footer-section p {
@@ -1544,8 +1589,9 @@ html.dark-mode .feature-card {
 .footer-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     transition: color var(--transition-fast);
+    word-break: break-word;
 }
 
 .footer-links a:hover {
@@ -1565,6 +1611,7 @@ html.dark-mode .feature-card {
         flex-direction: row;
         gap: clamp(1rem, 2vw, 1.5rem);
         border: none;
+        padding: 0;
     }
 
     .nav-link {
@@ -1574,6 +1621,14 @@ html.dark-mode .feature-card {
 
     .mobile-menu-btn {
         display: none;
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr;
+    }
+
+    .channel-flow {
+        flex-direction: column;
     }
 
     .hero-content {
@@ -1622,8 +1677,21 @@ html.dark-mode .feature-card {
         gap: clamp(2rem, 5vw, 4rem);
     }
 
-    .hero-title {
-        font-size: clamp(2rem, 5vw, 3.5rem);
+    .tech-content {
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .channel-flow {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .flow-connector {
+        width: clamp(40px, 10vw, 100px);
+        height: 2px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
     }
 
     .hero-subtitle {
@@ -1708,6 +1776,22 @@ html.dark-mode .feature-card {
     .hero-content {
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-3xl);
+    }
+
+    .tech-content {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-3xl);
+    }
+
+    .channel-flow {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .flow-connector {
+        width: clamp(40px, 10vw, 100px);
+        height: 2px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
     }
 
     .hero-title {
