@@ -88,6 +88,49 @@ body {
     line-height: 1.6;
     font-size: clamp(14px, 1vw, 16px);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Ensure all containers respect viewport width */
+main, section, article, .container, .nav-container, .hero-content, .price-wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Global text wrapping rules */
+h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+p, span, a, li, td {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Touch optimization for interactive elements */
+button, a, input, [role="button"], [role="link"] {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Fix potential horizontal scrolling */
+img, video, embed, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent text from overflowing */
+pre, code, textarea {
+    overflow-x: auto;
+    max-width: 100%;
 }
 
 /* ===== PARTICLE BACKGROUND ===== */
@@ -149,7 +192,7 @@ html.dark-mode .navbar {
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 clamp(1rem, 3vw, 2rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -237,8 +280,10 @@ html.dark-mode .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: 50%;
     background: var(--bg-secondary);
     color: var(--text-primary);
@@ -280,6 +325,10 @@ html:not(.dark-mode) .moon-icon {
     cursor: pointer;
     gap: 5px;
     padding: var(--spacing-md);
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
 }
 
 .mobile-menu-btn span {
@@ -310,7 +359,7 @@ html:not(.dark-mode) .moon-icon {
     right: 0;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(0.5rem, 3vw, 2rem);
     font-size: 0.9rem;
     z-index: 999;
     font-weight: 600;
@@ -318,12 +367,16 @@ html:not(.dark-mode) .moon-icon {
     justify-content: center;
     align-items: center;
     box-shadow: var(--shadow-md);
+    width: 100%;
+    overflow: hidden;
 }
 
 .price-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .price-label {
@@ -377,13 +430,14 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    padding: 150px var(--spacing-xl) 100px;
+    padding: clamp(80px, 10vw, 150px) clamp(1rem, 3vw, 2rem) clamp(50px, 8vw, 100px);
     margin-top: 110px;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .hero-background {
@@ -444,10 +498,11 @@ html:not(.dark-mode) .moon-icon {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-3xl);
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .hero-text h1 {
@@ -457,6 +512,10 @@ html:not(.dark-mode) .moon-icon {
     margin-bottom: var(--spacing-xl);
     letter-spacing: -1px;
     animation: text-fade-in 0.8s ease-out;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 @keyframes text-fade-in {
@@ -482,6 +541,8 @@ html:not(.dark-mode) .moon-icon {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-2xl);
     line-height: 1.8;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .hero-cta {
@@ -506,6 +567,9 @@ html:not(.dark-mode) .moon-icon {
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 .btn::before {
@@ -744,7 +808,7 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== PROBLEM SECTION ===== */
 .problem-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     position: relative;
 }
@@ -833,7 +897,7 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== SOLUTION SECTION ===== */
 .solution-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
 }
 
 .solution-grid {
@@ -909,7 +973,7 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== STATS SECTION ===== */
 .stats-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
     position: relative;
     overflow: hidden;
 }
@@ -1015,7 +1079,7 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== FEATURES SECTION ===== */
 .features-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
     position: relative;
 }
@@ -1242,7 +1306,7 @@ html.dark-mode .feature-card {
 
 /* ===== FAQ SECTION ===== */
 .faq-section {
-    padding: 80px var(--spacing-xl);
+    padding: clamp(40px, 8vw, 80px) clamp(1rem, 3vw, 2rem);
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     position: relative;
 }
@@ -1318,7 +1382,7 @@ html.dark-mode .feature-card {
 
 /* ===== CTA SECTION ===== */
 .cta-section {
-    padding: 100px var(--spacing-xl);
+    padding: clamp(50px, 10vw, 100px) clamp(1rem, 3vw, 2rem);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -1489,6 +1553,32 @@ html.dark-mode .feature-card {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Reduce orb sizes for mobile */
+    .orb-1 {
+        width: 250px;
+        height: 250px;
+        top: -125px;
+        left: -125px;
+    }
+
+    .orb-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -150px;
+        right: -150px;
+    }
+
+    .orb-3 {
+        width: 200px;
+        height: 200px;
+    }
+
     .nav-links {
         display: none;
         position: fixed;
@@ -1500,6 +1590,7 @@ html.dark-mode .feature-card {
         gap: 0;
         border-bottom: 1px solid var(--border-color);
         z-index: 999;
+        max-width: 100%;
     }
 
     .nav-links.active {
@@ -1507,8 +1598,9 @@ html.dark-mode .feature-card {
     }
 
     .nav-link {
-        padding: var(--spacing-lg) var(--spacing-xl);
+        padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem);
         border-bottom: 1px solid var(--border-color);
+        white-space: nowrap;
     }
 
     .mobile-menu-btn {
@@ -1518,23 +1610,38 @@ html.dark-mode .feature-card {
     .price-banner {
         flex-direction: column;
         gap: var(--spacing-md);
-        padding: var(--spacing-md);
+        padding: clamp(0.5rem, 2vw, 1rem);
         font-size: 0.85rem;
+        top: 60px;
     }
 
     .price-wrapper {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .price-value {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
     }
 
     .hero {
-        padding: 120px var(--spacing-lg) 60px;
+        padding: clamp(60px, 8vw, 120px) clamp(1rem, 2vw, 1.5rem) clamp(40px, 6vw, 60px);
         margin-top: 110px;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
+        gap: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+        margin-bottom: clamp(1rem, 3vw, 2rem);
     }
 
     .hero-visual {
@@ -1542,22 +1649,32 @@ html.dark-mode .feature-card {
     }
 
     .hero-cta {
-        justify-content: center;
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .btn {
+        padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 24px);
+        font-size: clamp(0.85rem, 1vw, 0.95rem);
     }
 
     .problem-grid,
     .solution-grid,
     .features-grid {
         grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1rem, 3vw, 1.5rem);
     }
 
     .tech-content {
         grid-template-columns: 1fr;
-        gap: var(--spacing-2xl);
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .faq-grid {
@@ -1566,102 +1683,223 @@ html.dark-mode .feature-card {
 
     .footer-content {
         grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: clamp(1rem, 2vw, 1.5rem);
     }
 
     section {
-        padding: 60px var(--spacing-lg) !important;
+        padding: clamp(40px, 6vw, 60px) clamp(1rem, 2vw, 1.5rem) !important;
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
     }
 
     .cta-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .stat-value {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .feature-icon {
+        font-size: clamp(2rem, 4vw, 2.5rem);
     }
 }
 
 @media (max-width: 480px) {
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Very small orbs for small screens */
+    .orb-1 {
+        width: 150px;
+        height: 150px;
+        top: -75px;
+        left: -75px;
+    }
+
+    .orb-2 {
+        width: 180px;
+        height: 180px;
+        bottom: -90px;
+        right: -90px;
+    }
+
+    .orb-3 {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Safe area support for notched devices */
+    .navbar {
+        padding-left: max(var(--spacing-md), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-md), env(safe-area-inset-right));
+    }
+
     .nav-container {
-        padding: 0 var(--spacing-lg);
+        padding: 0 clamp(0.5rem, 2vw, 1rem);
         height: 60px;
     }
 
     .logo {
-        gap: var(--spacing-sm);
+        gap: clamp(0.3rem, 1vw, 0.5rem);
     }
 
     .logo-img {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
 
     .logo-text {
-        font-size: 1rem;
+        font-size: clamp(0.85rem, 2vw, 1rem);
+    }
+
+    .mobile-menu-btn {
+        padding: var(--spacing-sm);
+    }
+
+    .mobile-menu-btn span {
+        width: 20px;
+        height: 2px;
     }
 
     .price-banner {
         top: 60px;
+        padding: 0.5rem clamp(0.5rem, 2vw, 1rem);
+        font-size: 0.8rem;
+    }
+
+    .price-wrapper {
+        gap: clamp(0.3rem, 1vw, 0.8rem);
+    }
+
+    .price-label,
+    .price-value,
+    .price-change {
+        font-size: 0.75rem !important;
     }
 
     .hero {
-        padding: 100px var(--spacing-md) 40px;
+        padding: clamp(50px, 6vw, 100px) clamp(0.75rem, 1.5vw, 1rem) clamp(30px, 4vw, 40px);
         margin-top: 100px;
     }
 
+    .hero-content {
+        gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
     .hero-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.5rem, 4vw, 1.8rem);
+        line-height: 1.3;
     }
 
     .hero-subtitle {
-        font-size: 0.95rem;
-    }
-
-    .btn {
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
     }
 
     .hero-cta {
         flex-direction: column;
         width: 100%;
+        gap: clamp(0.5rem, 1vw, 1rem);
     }
 
     .btn {
         width: 100%;
+        padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        min-height: 44px;
     }
 
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: clamp(1rem, 2vw, 1.5rem);
     }
 
     .stat-value {
-        font-size: 1.5rem;
+        font-size: clamp(1.3rem, 3vw, 1.5rem);
+    }
+
+    .stat-label {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+        line-height: 1.3;
     }
 
     .section-subtitle {
-        font-size: 0.95rem;
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     }
 
     .feature-icon {
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+
+    .feature-card {
+        padding: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .card-title {
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+    }
+
+    .card-description {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     }
 
     .cta-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.3rem, 3.5vw, 1.5rem);
     }
 
     .cta-actions {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h4 {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+
+    .footer-section a,
+    .footer-section p {
+        font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    }
+
+    .footer-bottom p {
+        font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    }
+
+    /* Ensure no horizontal scrolling */
+    * {
+        max-width: 100%;
+    }
+
+    .container,
+    section,
+    .nav-links {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
     }
 }
 
@@ -1671,6 +1909,22 @@ html.dark-mode .feature-card {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATION ===== */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover styles on touch devices */
+    .btn:hover,
+    .nav-link:hover,
+    a:hover {
+        transform: none;
+    }
+
+    .btn:active,
+    .nav-link:active,
+    a:active {
+        opacity: 0.8;
     }
 }
 
