@@ -666,6 +666,24 @@ html:not(.dark-mode) .moon-icon {
     transform: translateX(4px);
 }
 
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s ease-out;
+    pointer-events: none;
+    top: var(--ripple-top, 0);
+    left: var(--ripple-left, 0);
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
 /* ===== HERO VISUAL ===== */
 .hero-visual {
     position: relative;
