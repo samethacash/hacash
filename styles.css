@@ -450,8 +450,8 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    padding: clamp(80px, 10vw, 150px) clamp(1rem, 3vw, 2rem) clamp(50px, 8vw, 100px);
-    margin-top: 110px;
+    padding: 0 clamp(1rem, 3vw, 2rem) 0;
+    margin-top: 15px;
     position: relative;
     overflow: hidden;
     min-height: auto;
@@ -526,10 +526,10 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-text h1 {
-    font-size: clamp(1.8rem, 5vw, 4rem);
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
     font-weight: 800;
     line-height: 1.3;
-    margin-bottom: clamp(1rem, 3vw, 2rem);
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
     letter-spacing: -0.5px;
     animation: text-fade-in 0.8s ease-out;
     word-break: break-word;
@@ -558,10 +558,10 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-subtitle {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     color: var(--text-secondary);
-    margin-bottom: clamp(1rem, 3vw, 2rem);
-    line-height: 1.8;
+    margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
+    line-height: 1.6;
     word-break: break-word;
     overflow-wrap: break-word;
 }
@@ -1769,8 +1769,8 @@ html.dark-mode .feature-card {
     }
 
     .hero {
-        padding: 150px var(--spacing-xl) 100px;
-        margin-top: 150px;
+        padding: 10px var(--spacing-xl) 5px;
+        margin-top: 45px;
     }
 
     .hero-content {
@@ -1778,11 +1778,11 @@ html.dark-mode .feature-card {
         gap: var(--spacing-3xl);
     }
 
-    .tech-content {
+    .hero-visual {
+    .hero-content {
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-3xl);
     }
-
     .channel-flow {
         flex-direction: row;
         flex-wrap: wrap;
