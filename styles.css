@@ -450,8 +450,8 @@ html:not(.dark-mode) .moon-icon {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    padding: clamp(20px, 5vw, 40px) clamp(1rem, 3vw, 2rem) clamp(20px, 5vw, 40px);
-    margin-top: 60px;
+    padding: 0 clamp(1rem, 3vw, 2rem) 0;
+    margin-top: 25px;
     position: relative;
     overflow: hidden;
     min-height: auto;
@@ -517,7 +517,7 @@ html:not(.dark-mode) .moon-icon {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
     position: relative;
