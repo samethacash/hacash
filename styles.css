@@ -36,6 +36,7 @@
 
     --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -78,6 +79,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
 }
 
 body {
@@ -90,6 +92,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
+    contain: layout style paint;
 }
 
 /* Ensure all containers respect viewport width */
@@ -143,6 +146,7 @@ pre, code, textarea {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    contain: layout style paint;
 }
 
 .particle {
@@ -153,6 +157,7 @@ pre, code, textarea {
     border-radius: 50%;
     opacity: 0.3;
     animation: float-particle linear infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes float-particle {
@@ -180,6 +185,7 @@ pre, code, textarea {
     z-index: 1000;
     transition: background var(--transition), box-shadow var(--transition);
     padding: 0 clamp(0.5rem, 2vw, 1rem);
+    contain: layout style paint;
 }
 
 html.dark-mode .navbar {
@@ -466,6 +472,7 @@ html:not(.dark-mode) .moon-icon {
     position: absolute;
     inset: 0;
     z-index: -1;
+    contain: layout style paint;
 }
 
 .gradient-orb {
@@ -1245,6 +1252,7 @@ html:not(.dark-mode) .moon-icon {
     overflow: hidden;
     opacity: 0;
     animation: slide-in-up 0.6s ease-out forwards;
+    contain: layout style paint;
 }
 
 .problem-card::after {
@@ -1420,7 +1428,7 @@ html:not(.dark-mode) .moon-icon {
     border-radius: var(--radius-lg);
     transition: all var(--transition);
     opacity: 0;
-    animation: stat-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: stat-pop 0.6s var(--ease-out) forwards;
 }
 
 .stat-item:nth-child(1) { animation-delay: 0.1s; }
@@ -2003,6 +2011,10 @@ html.dark-mode .feature-card {
         font-size: clamp(1rem, 4vw, 1.6rem);
         color: rgba(255, 255, 255, 0.8);
         text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(0, 102, 204, 0.2);
+    }
+
+    .hero-text {
+        margin-top: 150px;
     }
 }
 
