@@ -543,7 +543,7 @@ html:not(.dark-mode) .moon-icon {
 /* Burst Logo - Appears when letters converge */
 .burst-logo {
     position: fixed;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     z-index: 49;
@@ -626,7 +626,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* H arrives at left of center position (40% mark) */
     40% {
-        top: 50%;
+        top: 30%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
         opacity: 0;
@@ -634,7 +634,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* Hold and sparkle for 3 seconds (40% - 60% = 3 seconds of 15 second cycle) */
     40%, 60% {
-        top: 50%;
+        top: 30%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
         opacity: 0;
@@ -663,7 +663,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* A arrives at second position in HACASH */
     40% {
-        top: 50%;
+        top: 30%;
         left: calc(50% - 90px);
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
@@ -671,7 +671,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* Hold and sparkle for 5 seconds */
     40%, 75% {
-        top: 50%;
+        top: 30%;
         left: calc(50% - 90px);
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
@@ -700,7 +700,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* C arrives at third position in HACASH */
     40% {
-        top: 50%;
+        top: 30%;
         right: auto;
         left: 50%;
         transform: translate(-50%, -50%) scale(1);
@@ -709,7 +709,7 @@ html:not(.dark-mode) .moon-icon {
     }
     /* Hold and sparkle */
     40%, 75% {
-        top: 50%;
+        top: 30%;
         right: auto;
         left: 50%;
         transform: translate(-50%, -50%) scale(1);
@@ -741,7 +741,7 @@ html:not(.dark-mode) .moon-icon {
     40% {
         bottom: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
@@ -750,7 +750,7 @@ html:not(.dark-mode) .moon-icon {
     40%, 75% {
         bottom: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
@@ -780,7 +780,7 @@ html:not(.dark-mode) .moon-icon {
     40% {
         bottom: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
@@ -789,7 +789,7 @@ html:not(.dark-mode) .moon-icon {
     40%, 75% {
         bottom: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
@@ -820,7 +820,7 @@ html:not(.dark-mode) .moon-icon {
         bottom: auto;
         right: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
@@ -830,7 +830,7 @@ html:not(.dark-mode) .moon-icon {
         bottom: auto;
         right: auto;
         left: 50%;
-        top: 50%;
+        top: 30%;
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
