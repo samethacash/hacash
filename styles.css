@@ -560,12 +560,12 @@ html:not(.dark-mode) .moon-icon {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    40%, 75% {
+    40%, 60% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
         filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8));
     }
-    85% {
+    65% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
     }
@@ -621,18 +621,18 @@ html:not(.dark-mode) .moon-icon {
         top: 50%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle for 5 seconds (40% - 75% = 5 seconds of 15 second cycle) */
-    40%, 75% {
+    /* Hold and sparkle for 3 seconds (40% - 60% = 3 seconds of 15 second cycle) */
+    40%, 60% {
         top: 50%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    85% {
+    65% {
         opacity: 0.7;
     }
     100% {
