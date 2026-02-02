@@ -520,104 +520,153 @@ html:not(.dark-mode) .moon-icon {
 
 /* Orbital Letters - Bursting from Orbits to Center */
 .orbital-text {
-    position: absolute;
+    position: fixed;
     font-size: clamp(0.8rem, 3vw, 1.2rem);
     font-weight: 800;
-    color: rgba(0, 102, 204, 0.8);
-    text-shadow: 0 0 15px rgba(0, 102, 204, 0.6), 0 0 30px rgba(0, 102, 204, 0.3);
-    letter-spacing: 2px;
-    z-index: 5;
+    color: rgba(0, 102, 204, 0.9);
+    text-shadow: 0 0 20px rgba(0, 102, 204, 0.7), 0 0 40px rgba(0, 102, 204, 0.4);
+    letter-spacing: 3px;
+    z-index: 50;
     pointer-events: none;
     font-family: 'Inter', sans-serif;
+    will-change: transform, opacity;
 }
 
-/* Position A - From Top Right, Burst to Center */
+/* Position A - From Far Top Right, Burst to Center */
 .orbital-a {
-    top: 15%;
-    right: 12%;
     animation: burst-to-center-a 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
 }
 
-/* Position S - From Bottom Right, Burst to Center */
-.orbital-s {
-    bottom: 20%;
-    right: 8%;
-    animation: burst-to-center-s 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-    animation-delay: 0.4s;
+/* Position C - From Far Top Left, Burst to Center */
+.orbital-c {
+    animation: burst-to-center-c 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    animation-delay: 0.267s;
 }
 
-/* Position H - From Bottom Left, Burst to Center */
+/* Position S - From Far Bottom Right, Burst to Center */
+.orbital-s {
+    animation: burst-to-center-s 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    animation-delay: 0.533s;
+}
+
+/* Position H - From Far Bottom Left, Burst to Center */
 .orbital-h {
-    bottom: 15%;
-    left: 10%;
     animation: burst-to-center-h 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
     animation-delay: 0.8s;
 }
 
-/* Burst to Center Animations */
+/* Burst to Center Animations - From Far Away */
 @keyframes burst-to-center-a {
     0% {
+        top: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
     }
-    10% {
-        opacity: 0.8;
+    40% {
+        opacity: 0.7;
     }
     50% {
-        /* Moving from top-right to center */
-        transform: translate(calc(-50vw + 12%), calc(50vh - 15%)) scale(1.2);
+        /* Moving to center from far away */
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%) scale(1.3);
         opacity: 1;
     }
-    90% {
-        opacity: 0.8;
+    60% {
+        opacity: 0.7;
     }
     100% {
+        top: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
+    }
+}
+
+@keyframes burst-to-center-c {
+    0% {
+        top: 5%;
+        left: 2%;
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    50% {
+        /* Moving to center from far away */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.7;
+    }
+    100% {
+        top: 5%;
+        left: 2%;
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
     }
 }
 
 @keyframes burst-to-center-s {
     0% {
+        bottom: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
     }
-    10% {
-        opacity: 0.8;
+    40% {
+        opacity: 0.7;
     }
     50% {
-        /* Moving from bottom-right to center */
-        transform: translate(calc(-50vw + 8%), calc(-50vh + 20%)) scale(1.2);
+        /* Moving to center from far away */
+        bottom: auto;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%) scale(1.3);
         opacity: 1;
     }
-    90% {
-        opacity: 0.8;
+    60% {
+        opacity: 0.7;
     }
     100% {
+        bottom: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
     }
 }
 
 @keyframes burst-to-center-h {
     0% {
+        bottom: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
     }
-    10% {
-        opacity: 0.8;
+    40% {
+        opacity: 0.7;
     }
     50% {
-        /* Moving from bottom-left to center */
-        transform: translate(calc(50vw - 10%), calc(-50vh + 15%)) scale(1.2);
+        /* Moving to center from far away */
+        bottom: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.3);
         opacity: 1;
     }
-    90% {
-        opacity: 0.8;
+    60% {
+        opacity: 0.7;
     }
     100% {
+        bottom: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
-        opacity: 0.6;
+        opacity: 0.5;
     }
 }
 
