@@ -492,24 +492,11 @@ html:not(.dark-mode) .moon-icon {
     animation-delay: 5s;
 }
 
-@media (max-width: 767px) {
-    .orb-1 {
-        top: 100px;
-        left: -100px;
-    }
-
-    .orb-2 {
-        top: 50px;
-        right: -100px;
-        bottom: auto;
-    }
-}
-
 .orb-3 {
     width: 350px;
     height: 350px;
     background: linear-gradient(135deg, var(--accent), var(--secondary));
-    top: 50%;
+    top: calc(50% - 38px);
     right: 10%;
     animation-delay: 10s;
 }
