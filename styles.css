@@ -185,7 +185,6 @@ pre, code, textarea {
     z-index: 1000;
     transition: background var(--transition), box-shadow var(--transition);
     padding: 0 clamp(0.5rem, 2vw, 1rem);
-    contain: layout style paint;
 }
 
 html.dark-mode .navbar {
