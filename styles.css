@@ -532,6 +532,56 @@ html:not(.dark-mode) .moon-icon {
     will-change: transform, opacity;
 }
 
+/* Hacash Center Logo - Appears when letters converge */
+.hacash-center-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 45;
+    pointer-events: none;
+    opacity: 0;
+    animation: logo-pulse 12s ease-in-out infinite;
+}
+
+.center-logo-img {
+    width: clamp(40px, 8vw, 80px);
+    height: clamp(40px, 8vw, 80px);
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.5));
+}
+
+@keyframes logo-pulse {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    /* Logo fades in when letters arrive at center (40%) */
+    35% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    /* Logo stays visible and glows while letters are at center (40% - 65%) */
+    40%, 65% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8));
+    }
+    /* Logo fades out as letters leave (65% - 75%) */
+    75% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
 /* Position H1 - From Far Top Left, Burst to Center - HACASH[0] */
 .orbital-h1 {
     animation: burst-to-center-h1 12s ease-in-out infinite;
@@ -565,8 +615,8 @@ html:not(.dark-mode) .moon-icon {
 /* All letters arrive at center simultaneously and hold together */
 @keyframes burst-to-center-h1 {
     0% {
-        top: 5%;
-        left: 2%;
+        top: -200px;
+        left: -200px;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -593,8 +643,8 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        top: 5%;
-        left: 2%;
+        top: -200px;
+        left: -200px;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -602,7 +652,7 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-a {
     0% {
-        top: 2%;
+        top: -200px;
         left: 50%;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
@@ -630,7 +680,7 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        top: 2%;
+        top: -200px;
         left: 50%;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
@@ -639,8 +689,9 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-c {
     0% {
-        top: 5%;
-        right: 2%;
+        top: -200px;
+        right: -200px;
+        left: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -669,8 +720,9 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        top: 5%;
-        right: 2%;
+        top: -200px;
+        right: -200px;
+        left: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -678,8 +730,9 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-a2 {
     0% {
-        bottom: 5%;
-        left: 2%;
+        bottom: -200px;
+        left: -200px;
+        top: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -708,8 +761,9 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        bottom: 5%;
-        left: 2%;
+        bottom: -200px;
+        left: -200px;
+        top: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -717,8 +771,9 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-s {
     0% {
-        bottom: 2%;
+        bottom: -200px;
         left: 50%;
+        top: auto;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
     }
@@ -747,8 +802,9 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        bottom: 2%;
+        bottom: -200px;
         left: 50%;
+        top: auto;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
     }
@@ -756,8 +812,10 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-h2 {
     0% {
-        bottom: 5%;
-        right: 2%;
+        bottom: -200px;
+        right: -200px;
+        top: auto;
+        left: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -788,8 +846,10 @@ html:not(.dark-mode) .moon-icon {
         opacity: 0.7;
     }
     100% {
-        bottom: 5%;
-        right: 2%;
+        bottom: -200px;
+        right: -200px;
+        top: auto;
+        left: auto;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
