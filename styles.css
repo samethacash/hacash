@@ -2058,7 +2058,7 @@ html.dark-mode .feature-card {
         display: none;
     }
 
-    /* Mobile: Move convergence point to specified area - middle of page */
+    /* Mobile: Move convergence point to center of page */
     .burst-logo {
         position: absolute;
         top: 50%;
