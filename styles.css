@@ -36,6 +36,7 @@
 
     --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -78,6 +79,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-y: scroll;
 }
 
 body {
@@ -90,6 +92,7 @@ body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
+    contain: layout style paint;
 }
 
 /* Ensure all containers respect viewport width */
@@ -143,6 +146,7 @@ pre, code, textarea {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    contain: layout style paint;
 }
 
 .particle {
@@ -153,6 +157,7 @@ pre, code, textarea {
     border-radius: 50%;
     opacity: 0.3;
     animation: float-particle linear infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes float-particle {
@@ -180,6 +185,7 @@ pre, code, textarea {
     z-index: 1000;
     transition: background var(--transition), box-shadow var(--transition);
     padding: 0 clamp(0.5rem, 2vw, 1rem);
+    contain: layout style paint;
 }
 
 html.dark-mode .navbar {
@@ -455,7 +461,8 @@ html:not(.dark-mode) .moon-icon {
     margin-top: 130px;
     position: relative;
     overflow: hidden;
-    min-height: auto;
+    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     width: 100%;
@@ -465,6 +472,7 @@ html:not(.dark-mode) .moon-icon {
     position: absolute;
     inset: 0;
     z-index: -1;
+    contain: layout style paint;
 }
 
 .gradient-orb {
@@ -545,8 +553,8 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .logo-burst-img {
-    width: clamp(50px, 8vw, 100px);
-    height: clamp(50px, 8vw, 100px);
+    width: clamp(60px, 10vw, 120px);
+    height: clamp(60px, 10vw, 120px);
     object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.6));
 }
@@ -560,12 +568,12 @@ html:not(.dark-mode) .moon-icon {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    40%, 75% {
+    40%, 60% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
         filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8));
     }
-    85% {
+    65% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);
     }
@@ -621,18 +629,18 @@ html:not(.dark-mode) .moon-icon {
         top: 50%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle for 5 seconds (40% - 75% = 5 seconds of 15 second cycle) */
-    40%, 75% {
+    /* Hold and sparkle for 3 seconds (40% - 60% = 3 seconds of 15 second cycle) */
+    40%, 60% {
         top: 50%;
         left: calc(50% - 180px);
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        opacity: 0;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    85% {
+    65% {
         opacity: 0.7;
     }
     100% {
@@ -1073,6 +1081,7 @@ html:not(.dark-mode) .moon-icon {
 .network-svg {
     width: 100%;
     height: 100%;
+    display: none;
 }
 
 .node {
@@ -1108,6 +1117,38 @@ html:not(.dark-mode) .moon-icon {
 .node-2 { animation-delay: 1s; }
 .node-3 { animation-delay: 2s; }
 .node-4 { animation-delay: 3s; }
+
+/* ===== DESKTOP LOGO DISPLAY ===== */
+.hero-graphic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-image: url('logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.95;
+    pointer-events: auto;
+    z-index: 10;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-graphic:hover::before {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8)) 
+            drop-shadow(0 0 60px rgba(0, 204, 132, 0.5));
+}
+
+/* Hide logo on mobile */
+@media (max-width: 768px) {
+    .hero-graphic::before {
+        display: none;
+    }
+}
 
 @keyframes float-node {
     0%, 100% {
@@ -1211,6 +1252,7 @@ html:not(.dark-mode) .moon-icon {
     overflow: hidden;
     opacity: 0;
     animation: slide-in-up 0.6s ease-out forwards;
+    contain: layout style paint;
 }
 
 .problem-card::after {
@@ -1386,7 +1428,7 @@ html:not(.dark-mode) .moon-icon {
     border-radius: var(--radius-lg);
     transition: all var(--transition);
     opacity: 0;
-    animation: stat-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: stat-pop 0.6s var(--ease-out) forwards;
 }
 
 .stat-item:nth-child(1) { animation-delay: 0.1s; }
@@ -1959,6 +2001,38 @@ html.dark-mode .feature-card {
 
 /* Mobile Optimization for Orbital Letters */
 @media (max-width: 599px) {
+    .hero {
+        min-height: 100vh;
+        max-height: 100vh;
+        height: 100vh;
+        padding: 20px clamp(1rem, 3vw, 2rem) 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 80px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 10;
+        position: relative;
+        width: 100%;
+        flex: 0 0 auto;
+        margin-top: 0;
+    }
+
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        contain: layout style paint;
+    }
+
     .orbital-text {
         font-size: clamp(0.7rem, 2.5vw, 1rem);
         color: rgba(0, 102, 204, 0.65);
@@ -1970,6 +2044,77 @@ html.dark-mode .feature-card {
         color: rgba(255, 255, 255, 0.8);
         text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(0, 102, 204, 0.2);
     }
+
+    .hero-text {
+        margin-top: 0;
+        padding-top: 0;
+        order: 1;
+        text-align: center;
+        flex: 0 0 auto;
+    }
+
+    .hero-visual {
+        order: 2;
+        display: none;
+    }
+
+    /* Mobile: Move convergence point to center of page */
+    .burst-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 8;
+    }
+
+    .logo-burst-img {
+        width: clamp(100px, 15vw, 180px);
+        height: clamp(100px, 15vw, 180px);
+    }
+
+    /* Mobile convergence point for all letters */
+    @keyframes burst-to-center-h1-mobile {
+        0% { top: 5%; left: 2%; }
+        40%, 60% { top: 38%; left: calc(50% - 180px); }
+        100% { top: 5%; left: 2%; }
+    }
+
+    @keyframes burst-to-center-a-mobile {
+        0% { top: 2%; left: 50%; }
+        40%, 75% { top: 38%; left: calc(50% - 90px); }
+        100% { top: 2%; left: 50%; }
+    }
+
+    @keyframes burst-to-center-c-mobile {
+        0% { top: 5%; right: 2%; }
+        40%, 75% { top: 38%; right: auto; left: 50%; }
+        100% { top: 5%; right: 2%; }
+    }
+
+    @keyframes burst-to-center-a2-mobile {
+        0% { bottom: 5%; left: 2%; }
+        40%, 75% { bottom: auto; left: 50%; top: 38%; }
+        100% { bottom: 5%; left: 2%; }
+    }
+
+    @keyframes burst-to-center-s-mobile {
+        0% { bottom: 2%; left: 50%; }
+        40%, 75% { bottom: auto; left: 50%; top: 38%; }
+        100% { bottom: 2%; left: 50%; }
+    }
+
+    @keyframes burst-to-center-h2-mobile {
+        0% { bottom: 5%; right: 2%; }
+        40%, 75% { bottom: auto; right: auto; left: 50%; top: 38%; }
+        100% { bottom: 5%; right: 2%; }
+    }
+
+    .orbital-h1 { animation: burst-to-center-h1-mobile 15s ease-in-out infinite; }
+    .orbital-a { animation: burst-to-center-a-mobile 15s ease-in-out infinite; }
+    .orbital-c { animation: burst-to-center-c-mobile 15s ease-in-out infinite; }
+    .orbital-a2 { animation: burst-to-center-a2-mobile 15s ease-in-out infinite; }
+    .orbital-s { animation: burst-to-center-s-mobile 15s ease-in-out infinite; }
+    .orbital-h2 { animation: burst-to-center-h2-mobile 15s ease-in-out infinite; }
 }
 
 /* Tablet & Small Desktop (600px+) */
@@ -2262,5 +2407,12 @@ html.dark-mode .feature-card {
     body {
         background: white;
         color: black;
+    }
+}
+
+/* Mobile Hero Height Reset */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
     }
 }
