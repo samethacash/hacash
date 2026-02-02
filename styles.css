@@ -2058,13 +2058,12 @@ html.dark-mode .feature-card {
         display: none;
     }
 
-    /* Mobile: Move convergence point to specified area - bottom of page */
+    /* Mobile: Move convergence point to specified area - middle of page */
     .burst-logo {
         position: absolute;
-        bottom: 80px;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
-        top: auto;
+        transform: translate(-50%, -50%);
         z-index: 8;
     }
 
