@@ -451,7 +451,7 @@ html:not(.dark-mode) .moon-icon {
 /* ===== HERO SECTION ===== */
 .hero {
     padding: 20px clamp(1rem, 3vw, 2rem) 0;
-    margin-top: 130px;
+    margin-top: 100px;
     position: relative;
     overflow: hidden;
     min-height: auto;
@@ -558,7 +558,7 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .hero-subtitle {
-    font-size: clamp(0.95rem, 1.8vw, 0.95rem);
+    font-size: clamp(1.15rem, 2vw, 1rem);
     color: var(--text-secondary);
     margin-bottom: clamp(0.75rem, 2vw, 1.5rem);
     line-height: 1.6;
