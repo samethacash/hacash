@@ -95,15 +95,16 @@ class NavigationManager {
     }
 
     setupNavigation() {
-        window.addEventListener('scroll', () => {
+        const updateNavOnScroll = throttle(() => {
             if (window.scrollY > 50) {
                 this.navbar.classList.add('scrolled');
             } else {
                 this.navbar.classList.remove('scrolled');
             }
-
             this.updateActiveLink();
-        });
+        }, 200);
+        
+        window.addEventListener('scroll', updateNavOnScroll, { passive: true });
     }
 
     updateActiveLink() {
@@ -313,6 +314,7 @@ class ScrollProgressManager {
 }
 class MouseTrackingManager {
     constructor() {
+        this.handleMouseMove = throttle((e) => this.trackMouse(e), 30);
         this.init();
     }
 
@@ -320,20 +322,23 @@ class MouseTrackingManager {
         const cards = document.querySelectorAll('.problem-card, .solution-card, .feature-card');
         
         cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                
-                card.style.setProperty('--mouse-x', x + '%');
-                card.style.setProperty('--mouse-y', y + '%');
-            });
+            card.addEventListener('mousemove', this.handleMouseMove, { passive: true });
 
             card.addEventListener('mouseleave', () => {
                 card.style.setProperty('--mouse-x', '50%');
                 card.style.setProperty('--mouse-y', '50%');
             });
         });
+    }
+
+    trackMouse(e) {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
     }
 }
 
@@ -458,7 +463,7 @@ class HeroManager {
     }
 
     setupParallax() {
-        window.addEventListener('mousemove', (e) => {
+        const handleMouseMove = throttle((e) => {
             if (window.innerWidth < 768) return;
 
             const heroRect = this.hero.getBoundingClientRect();
@@ -471,7 +476,9 @@ class HeroManager {
             const moveY = (y - 0.5) * 20;
 
             this.heroGraphic.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
+        }, 50);
+        
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
     setupNodeAnimation() {
@@ -661,68 +668,54 @@ class AnalyticsManager {
     }
 }
 
-// ===== UTILITY FUNCTIONS =====
-class UtilityManager {
-    static debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
+// ===== PERFORMANCE OPTIMIZATION =====
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
             clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+            func(...args);
         };
-    }
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
 
-    static throttle(func, limit) {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
+const throttle = (func, limit) => {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+};
 
-    static observeElement(selector, callback, options = {}) {
-        const element = document.querySelector(selector);
-        if (!element) return;
-
-        const observer = new IntersectionObserver(callback, {
-            threshold: 0.1,
-            ...options
-        });
-        observer.observe(element);
-        return observer;
-    }
-}
-
-// ===== INITIALIZE ALL SYSTEMS =====
+// ===== INITIALIZE ALL SYSTEMS ===== 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Hacash Premium Site Initializing...');
 
     // Initialize all managers
-    const darkMode = new DarkModeManager();
-    const navigation = new NavigationManager();
-    const priceTicker = new PriceTickerManager();
-    const particles = new ParticleSystem();
-    const scrollAnimation = new ScrollAnimationManager();
-    const performance = new PerformanceManager();
-    const hero = new HeroManager();
-    const faq = new FAQManager();
-    const ripple = new RippleEffectManager();
-    const stats = new StatsCounterManager();
-    const channelFlow = new ChannelFlowManager();
-    const analytics = new AnalyticsManager();
-    const mouseTracking = new MouseTrackingManager();
-    const scrollProgress = new ScrollProgressManager();
-    const tooltips = new TooltipManager();
-    const sectionReveal = new SectionRevealManager();
+    new DarkModeManager();
+    new NavigationManager();
+    new PriceTickerManager();
+    new ParticleSystem();
+    new ScrollAnimationManager();
+    new PerformanceManager();
+    new HeroManager();
+    new FAQManager();
+    new RippleEffectManager();
+    new StatsCounterManager();
+    new ChannelFlowManager();
+    new AnalyticsManager();
+    new MouseTrackingManager();
+    new ScrollProgressManager();
+    new TooltipManager();
+    new SectionRevealManager();
 
     console.log('✅ All systems initialized successfully!');
-});
+}, { once: true });
 
 // ===== SMOOTH SCROLL ENHANCEMENT =====
 if (CSS.supports('scroll-behavior', 'smooth')) {
@@ -730,25 +723,28 @@ if (CSS.supports('scroll-behavior', 'smooth')) {
 }
 
 // ===== ACCESSIBILITY ENHANCEMENTS =====
-document.addEventListener('keydown', (e) => {
-    // Keyboard navigation support
+const handleEscapeKey = (e) => {
     if (e.key === 'Escape') {
         const navLinks = document.getElementById('navLinks');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        if (navLinks.classList.contains('active')) {
+        if (navLinks?.classList.contains('active')) {
             navLinks.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn?.classList.remove('active');
         }
     }
-});
+};
+
+document.addEventListener('keydown', handleEscapeKey);
 
 // ===== RESPONSIVE OBSERVER =====
 const mediaQuery = window.matchMedia('(max-width: 768px)');
-mediaQuery.addEventListener('change', () => {
+const handleMediaChange = () => {
     const navLinks = document.getElementById('navLinks');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     if (mediaQuery.matches) {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
+        navLinks?.classList.remove('active');
+        mobileMenuBtn?.classList.remove('active');
     }
-});
+};
+
+mediaQuery.addEventListener('change', handleMediaChange);
