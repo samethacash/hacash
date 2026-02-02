@@ -571,6 +571,7 @@ html:not(.dark-mode) .moon-icon {
     display: flex;
     gap: var(--spacing-lg);
     flex-wrap: wrap;
+    margin-top: clamp(1.5rem, 3vw, 2rem);
 }
 
 /* ===== BUTTONS ===== */
