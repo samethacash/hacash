@@ -532,6 +532,49 @@ html:not(.dark-mode) .moon-icon {
     will-change: transform, opacity;
 }
 
+/* Burst Logo - Appears when letters converge */
+.burst-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 49;
+    pointer-events: none;
+    opacity: 0;
+    animation: logo-burst 15s ease-in-out infinite;
+}
+
+.logo-burst-img {
+    width: clamp(50px, 8vw, 100px);
+    height: clamp(50px, 8vw, 100px);
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.6));
+}
+
+@keyframes logo-burst {
+    0%, 35% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    40% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    40%, 75% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8));
+    }
+    85% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
 /* Position H1 - From Far Top Left, Burst to Center - HACASH[0] */
 .orbital-h1 {
     animation: burst-to-center-h1 15s ease-in-out infinite;
