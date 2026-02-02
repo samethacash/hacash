@@ -496,7 +496,7 @@ html:not(.dark-mode) .moon-icon {
     width: 350px;
     height: 350px;
     background: linear-gradient(135deg, var(--accent), var(--secondary));
-    top: calc(50% - 38px);
+    top: 50%;
     right: 10%;
     animation-delay: 10s;
 }
@@ -1897,6 +1897,20 @@ html.dark-mode .feature-card {
     .nav-link:active,
     a:active {
         opacity: 0.8;
+    }
+}
+
+/* ===== MOBILE ORBS REPOSITIONING ===== */
+@media (max-width: 767px) {
+    .orb-1 {
+        top: 200px !important;
+        left: -150px !important;
+    }
+
+    .orb-2 {
+        top: 80px !important;
+        right: -150px !important;
+        bottom: auto !important;
     }
 }
 
