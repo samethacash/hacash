@@ -2007,6 +2007,7 @@ html.dark-mode .feature-card {
         height: 100vh;
         padding: 20px clamp(1rem, 3vw, 2rem) 60px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
@@ -2014,11 +2015,20 @@ html.dark-mode .feature-card {
     .hero-content {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 0;
         align-items: center;
-        text-align: center;
+        justify-content: center;
         z-index: 10;
         position: relative;
+        width: 100%;
+        order: 1;
+    }
+
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        contain: layout style paint;
     }
 
     .orbital-text {
@@ -2036,19 +2046,20 @@ html.dark-mode .feature-card {
     .hero-text {
         margin-top: 0;
         padding-top: 0;
-        order: 2;
+        order: 1;
+        text-align: center;
     }
 
     .hero-visual {
-        order: 1;
+        order: 2;
         display: none;
     }
 
     /* Mobile: Move convergence point to specified area - top: 38% */
     .burst-logo {
-        top: 50%;
+        top: 60%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
     }
 
     .logo-burst-img {
