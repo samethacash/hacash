@@ -545,8 +545,8 @@ html:not(.dark-mode) .moon-icon {
 }
 
 .logo-burst-img {
-    width: clamp(30px, 5vw, 60px);
-    height: clamp(30px, 5vw, 60px);
+    width: clamp(50px, 8vw, 90px);
+    height: clamp(50px, 8vw, 90px);
     object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.6));
 }
