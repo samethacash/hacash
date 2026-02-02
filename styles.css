@@ -2009,7 +2009,8 @@ html.dark-mode .feature-card {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 80px;
     }
 
     .hero-content {
@@ -2017,11 +2018,11 @@ html.dark-mode .feature-card {
         flex-direction: column;
         gap: 0;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         z-index: 10;
         position: relative;
         width: 100%;
-        order: 1;
+        flex: 0 0 auto;
     }
 
     .hero-background {
@@ -2048,6 +2049,7 @@ html.dark-mode .feature-card {
         padding-top: 0;
         order: 1;
         text-align: center;
+        flex: 0 0 auto;
     }
 
     .hero-visual {
@@ -2055,11 +2057,14 @@ html.dark-mode .feature-card {
         display: none;
     }
 
-    /* Mobile: Move convergence point to specified area - top: 38% */
+    /* Mobile: Move convergence point to specified area - bottom of page */
     .burst-logo {
-        top: 60%;
+        position: fixed;
+        bottom: 100px;
         left: 50%;
         transform: translateX(-50%);
+        top: auto;
+        z-index: 8;
     }
 
     .logo-burst-img {
