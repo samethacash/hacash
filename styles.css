@@ -2002,16 +2002,23 @@ html.dark-mode .feature-card {
 /* Mobile Optimization for Orbital Letters */
 @media (max-width: 599px) {
     .hero {
-        min-height: auto;
-        max-height: none;
-        height: auto;
+        min-height: 100vh;
+        max-height: 100vh;
+        height: 100vh;
         padding: 20px clamp(1rem, 3vw, 2rem) 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero-content {
         display: flex;
         flex-direction: column;
         gap: 40px;
+        align-items: center;
+        text-align: center;
+        z-index: 10;
+        position: relative;
     }
 
     .orbital-text {
@@ -2039,7 +2046,9 @@ html.dark-mode .feature-card {
 
     /* Mobile: Move convergence point to specified area - top: 38% */
     .burst-logo {
-        top: 38%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .logo-burst-img {
