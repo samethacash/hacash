@@ -453,7 +453,7 @@ html:not(.dark-mode) .moon-icon {
     padding: 20px clamp(1rem, 3vw, 2rem) 0;
     margin-top: 130px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     min-height: auto;
     display: flex;
     align-items: center;
@@ -1622,6 +1622,38 @@ html.dark-mode .feature-card {
 
 /* Base: Mobile (375px - 599px) - Already styled above */
 
+/* Mobile orbs repositioning */
+@media (max-width: 767px) {
+    .gradient-orb {
+        position: relative !important;
+        inset: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100px !important;
+        height: 100px !important;
+        margin-top: clamp(1rem, 3vw, 2rem) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .orb-1 {
+        top: auto !important;
+        left: auto !important;
+    }
+
+    .orb-2 {
+        bottom: auto !important;
+        right: auto !important;
+    }
+
+    .orb-3 {
+        top: auto !important;
+        right: auto !important;
+    }
+}
+
 /* Tablet & Small Desktop (600px+) */
 @media (min-width: 600px) {
     .nav-links {
@@ -1897,20 +1929,6 @@ html.dark-mode .feature-card {
     .nav-link:active,
     a:active {
         opacity: 0.8;
-    }
-}
-
-/* ===== MOBILE ORBS REPOSITIONING ===== */
-@media (max-width: 767px) {
-    .orb-1 {
-        top: -500px !important;
-        left: -150px !important;
-    }
-
-    .orb-2 {
-        top: -600px !important;
-        right: -150px !important;
-        bottom: auto !important;
     }
 }
 
