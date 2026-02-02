@@ -532,119 +532,69 @@ html:not(.dark-mode) .moon-icon {
     will-change: transform, opacity;
 }
 
-/* Hacash Center Logo - Appears when letters converge */
-.hacash-center-logo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 45;
-    pointer-events: none;
-    opacity: 0;
-    animation: logo-pulse 12s ease-in-out infinite;
-}
-
-.center-logo-img {
-    width: clamp(40px, 8vw, 80px);
-    height: clamp(40px, 8vw, 80px);
-    object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(0, 102, 204, 0.5));
-}
-
-@keyframes logo-pulse {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    /* Logo fades in when letters arrive at center (40%) */
-    35% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    40% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    /* Logo stays visible and glows while letters are at center (40% - 65%) */
-    40%, 65% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-        filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8));
-    }
-    /* Logo fades out as letters leave (65% - 75%) */
-    75% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-}
-
 /* Position H1 - From Far Top Left, Burst to Center - HACASH[0] */
 .orbital-h1 {
-    animation: burst-to-center-h1 12s ease-in-out infinite;
+    animation: burst-to-center-h1 15s ease-in-out infinite;
 }
 
 /* Position A - From Top, Burst to Center - HACASH[1] */
 .orbital-a {
-    animation: burst-to-center-a 12s ease-in-out infinite;
+    animation: burst-to-center-a 15s ease-in-out infinite;
 }
 
 /* Position C - From Far Top Right, Burst to Center - HACASH[2] */
 .orbital-c {
-    animation: burst-to-center-c 12s ease-in-out infinite;
+    animation: burst-to-center-c 15s ease-in-out infinite;
 }
 
 /* Position A2 - From Far Bottom Left, Burst to Center - HACASH[3] */
 .orbital-a2 {
-    animation: burst-to-center-a2 12s ease-in-out infinite;
+    animation: burst-to-center-a2 15s ease-in-out infinite;
 }
 
 /* Position S - From Bottom, Burst to Center - HACASH[4] */
 .orbital-s {
-    animation: burst-to-center-s 12s ease-in-out infinite;
+    animation: burst-to-center-s 15s ease-in-out infinite;
 }
 
 /* Position H2 - From Far Bottom Right, Burst to Center - HACASH[5] */
 .orbital-h2 {
-    animation: burst-to-center-h2 12s ease-in-out infinite;
+    animation: burst-to-center-h2 15s ease-in-out infinite;
 }
 
-/* All letters arrive at center simultaneously and hold together */
+/* All letters arrive at center simultaneously and form word HACASH */
 @keyframes burst-to-center-h1 {
     0% {
-        top: -200px;
-        left: -200px;
+        top: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* H arrives at left of center position (40% mark) */
     40% {
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        left: calc(50% - 180px);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center for 3 seconds (40% - 65% = 3 seconds of 12 second cycle) */
-    40%, 65% {
+    /* Hold and sparkle for 5 seconds (40% - 75% = 5 seconds of 15 second cycle) */
+    40%, 75% {
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        left: calc(50% - 180px);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        top: -200px;
-        left: -200px;
+        top: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -652,7 +602,7 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-a {
     0% {
-        top: -200px;
+        top: 2%;
         left: 50%;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
@@ -660,27 +610,27 @@ html:not(.dark-mode) .moon-icon {
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* A arrives at second position in HACASH */
     40% {
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        left: calc(50% - 90px);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center */
-    40%, 65% {
+    /* Hold and sparkle for 5 seconds */
+    40%, 75% {
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        left: calc(50% - 90px);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        top: -200px;
+        top: 2%;
         left: 50%;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
@@ -689,40 +639,38 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-c {
     0% {
-        top: -200px;
-        right: -200px;
-        left: auto;
+        top: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* C arrives at third position in HACASH */
     40% {
         top: 50%;
         right: auto;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center */
-    40%, 65% {
+    /* Hold and sparkle */
+    40%, 75% {
         top: 50%;
         right: auto;
         left: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        top: -200px;
-        right: -200px;
-        left: auto;
+        top: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -730,40 +678,38 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-a2 {
     0% {
-        bottom: -200px;
-        left: -200px;
-        top: auto;
+        bottom: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* A (second) arrives at fourth position in HACASH */
     40% {
         bottom: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center */
-    40%, 65% {
+    /* Hold and sparkle */
+    40%, 75% {
         bottom: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        bottom: -200px;
-        left: -200px;
-        top: auto;
+        bottom: 5%;
+        left: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
@@ -771,40 +717,38 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-s {
     0% {
-        bottom: -200px;
+        bottom: 2%;
         left: 50%;
-        top: auto;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
     }
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* S arrives at fifth position in HACASH */
     40% {
         bottom: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center */
-    40%, 65% {
+    /* Hold and sparkle */
+    40%, 75% {
         bottom: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        bottom: -200px;
+        bottom: 2%;
         left: 50%;
-        top: auto;
         transform: translate(-50%, 0) scale(1);
         opacity: 0.5;
     }
@@ -812,44 +756,40 @@ html:not(.dark-mode) .moon-icon {
 
 @keyframes burst-to-center-h2 {
     0% {
-        bottom: -200px;
-        right: -200px;
-        top: auto;
-        left: auto;
+        bottom: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
     35% {
         opacity: 0.7;
     }
-    /* All arrive at center at same time: 40% mark */
+    /* H (second) arrives at sixth position in HACASH */
     40% {
         bottom: auto;
         right: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    /* Hold and sparkle at center for 3 seconds */
-    40%, 65% {
+    /* Hold and sparkle for 5 seconds */
+    40%, 75% {
         bottom: auto;
         right: auto;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 1;
         text-shadow: 0 0 20px rgba(0, 102, 204, 0.9), 0 0 40px rgba(0, 102, 204, 0.7), 0 0 60px rgba(0, 102, 204, 0.5);
     }
-    75% {
+    85% {
         opacity: 0.7;
     }
     100% {
-        bottom: -200px;
-        right: -200px;
-        top: auto;
-        left: auto;
+        bottom: 5%;
+        right: 2%;
         transform: translate(0, 0) scale(1);
         opacity: 0.5;
     }
