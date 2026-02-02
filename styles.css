@@ -455,7 +455,8 @@ html:not(.dark-mode) .moon-icon {
     margin-top: 130px;
     position: relative;
     overflow: hidden;
-    min-height: auto;
+    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     width: 100%;
@@ -1073,6 +1074,7 @@ html:not(.dark-mode) .moon-icon {
 .network-svg {
     width: 100%;
     height: 100%;
+    display: none;
 }
 
 .node {
@@ -1108,6 +1110,38 @@ html:not(.dark-mode) .moon-icon {
 .node-2 { animation-delay: 1s; }
 .node-3 { animation-delay: 2s; }
 .node-4 { animation-delay: 3s; }
+
+/* ===== DESKTOP LOGO DISPLAY ===== */
+.hero-graphic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background-image: url('logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.95;
+    pointer-events: auto;
+    z-index: 10;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-graphic:hover::before {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.8)) 
+            drop-shadow(0 0 60px rgba(0, 204, 132, 0.5));
+}
+
+/* Hide logo on mobile */
+@media (max-width: 768px) {
+    .hero-graphic::before {
+        display: none;
+    }
+}
 
 @keyframes float-node {
     0%, 100% {
@@ -2262,5 +2296,12 @@ html.dark-mode .feature-card {
     body {
         background: white;
         color: black;
+    }
+}
+
+/* Mobile Hero Height Reset */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
     }
 }
