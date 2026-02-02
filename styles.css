@@ -176,7 +176,7 @@ pre, code, textarea {
 
 /* ===== NAVIGATION ===== */
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
@@ -238,7 +238,7 @@ html.dark-mode .navbar {
 }
 
 .nav-links {
-    display: none;
+    display: flex;
     list-style: none;
     gap: clamp(0.5rem, 1.5vw, 1.5rem);
     margin: 0;
@@ -252,10 +252,15 @@ html.dark-mode .navbar {
     border-bottom: 1px solid var(--border-color);
     padding: clamp(0.5rem, 2vw, 1rem);
     z-index: 999;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .nav-links.active {
-    display: flex;
+    max-height: 500px;
+    opacity: 1;
 }
 
 .nav-link {
@@ -2001,8 +2006,13 @@ html.dark-mode .feature-card {
 
 /* Mobile Optimization for Orbital Letters */
 @media (max-width: 599px) {
-    .hero {
-        min-height: 100vh;
+    .mobile-menu-btn {
+        display: flex !important;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .hero {n        min-height: 100vh;
         max-height: 100vh;
         height: 100vh;
         padding: 20px clamp(1rem, 3vw, 2rem) 60px;
@@ -2011,6 +2021,29 @@ html.dark-mode .feature-card {
         align-items: center;
         justify-content: space-between;
         padding-top: 80px;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: fixed;
+        top: 120px;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        flex-direction: column;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-color);
+        padding: clamp(0.5rem, 2vw, 1rem);
+        z-index: 999;
+        gap: clamp(0.5rem, 1.5vw, 1.5rem);
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+        opacity: 1;
     }
 
     .hero-content {
@@ -2127,10 +2160,13 @@ html.dark-mode .feature-card {
         gap: clamp(1rem, 2vw, 1.5rem);
         border: none;
         padding: 0;
+        opacity: 1 !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .nav-link {
-        padding: 0;
+        padding: 0.5rem 1rem;
         border: none;
     }
 
