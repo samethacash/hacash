@@ -1900,6 +1900,20 @@ html.dark-mode .feature-card {
     }
 }
 
+/* ===== MOBILE ORBS REPOSITIONING ===== */
+@media (max-width: 767px) {
+    .orb-1 {
+        top: -500px !important;
+        left: -150px !important;
+    }
+
+    .orb-2 {
+        top: -600px !important;
+        right: -150px !important;
+        bottom: auto !important;
+    }
+}
+
 /* ===== PRINT STYLES ===== */
 @media print {
     .navbar,
