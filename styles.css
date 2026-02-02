@@ -476,7 +476,7 @@ html:not(.dark-mode) .moon-icon {
 
 @media (max-width: 767px) {
     .gradient-orb {
-        transform: translateY(-150px);
+        transform: translateY(80px);
     }
 }
 
