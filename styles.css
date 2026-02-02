@@ -502,20 +502,104 @@ html:not(.dark-mode) .moon-icon {
     animation-delay: 10s;
 }
 
-/* Orb Text Styling */
-.orb-text {
+/* Orb Letter Styling - Inside Orbits */
+.orb-letter {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: clamp(1.5rem, 8vw, 3rem);
+    font-size: clamp(1.2rem, 5vw, 2.2rem);
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(0, 102, 204, 0.4);
-    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 102, 204, 0.3);
+    letter-spacing: 1px;
     z-index: 10;
     pointer-events: none;
     font-family: 'Inter', sans-serif;
+}
+
+/* Orbital Letters - Around Hero Background */
+.orbital-text {
+    position: absolute;
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
+    font-weight: 800;
+    color: rgba(0, 102, 204, 0.7);
+    text-shadow: 0 0 15px rgba(0, 102, 204, 0.5);
+    letter-spacing: 2px;
+    z-index: 5;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Position A - Top Right */
+.orbital-a {
+    top: 15%;
+    right: 12%;
+    animation: orbital-float-a 20s ease-in-out infinite;
+}
+
+/* Position S - Bottom Right */
+.orbital-s {
+    bottom: 20%;
+    right: 8%;
+    animation: orbital-float-s 22s ease-in-out infinite;
+}
+
+/* Position H - Bottom Left */
+.orbital-h {
+    bottom: 15%;
+    left: 10%;
+    animation: orbital-float-h 21s ease-in-out infinite;
+}
+
+/* Orbital Motion Animations */
+@keyframes orbital-float-a {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(15px, -10px) scale(1.05);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(0, 20px) scale(0.95);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(-15px, -15px) scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes orbital-float-s {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    33% {
+        transform: translate(-20px, -15px) scale(1.08);
+        opacity: 0.8;
+    }
+    66% {
+        transform: translate(20px, 15px) scale(0.92);
+        opacity: 0.6;
+    }
+}
+
+@keyframes orbital-float-h {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    30% {
+        transform: translate(20px, 10px) scale(1.06);
+        opacity: 0.8;
+    }
+    60% {
+        transform: translate(-15px, -20px) scale(0.94);
+        opacity: 0.6;
+    }
 }
 
 @keyframes orb-float {
@@ -1637,13 +1721,18 @@ html.dark-mode .feature-card {
 
 /* Base: Mobile (375px - 599px) - Already styled above */
 
-/* Mobile Text Optimization */
+/* Mobile Optimization for Orbital Letters */
 @media (max-width: 599px) {
-    .orb-text {
-        font-size: clamp(1rem, 6vw, 1.8rem);
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 102, 204, 0.3);
-        letter-spacing: 1px;
-        font-weight: 800;
+    .orbital-text {
+        font-size: clamp(0.7rem, 2.5vw, 1rem);
+        color: rgba(0, 102, 204, 0.65);
+        text-shadow: 0 0 10px rgba(0, 102, 204, 0.4);
+    }
+
+    .orb-letter {
+        font-size: clamp(1rem, 4vw, 1.6rem);
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(0, 102, 204, 0.2);
     }
 }
 
