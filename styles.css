@@ -472,12 +472,11 @@ html:not(.dark-mode) .moon-icon {
     filter: blur(80px);
     opacity: 0.6;
     animation: orb-float 15s ease-in-out infinite;
-    transform: translateY(-80px);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
     .gradient-orb {
-        transform: translateY(0);
+        transform: translateY(120px);
     }
 }
 
