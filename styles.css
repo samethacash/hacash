@@ -254,14 +254,12 @@ html.dark-mode .navbar {
     z-index: 999;
     max-height: 0;
     overflow: hidden;
-    visibility: hidden;
     opacity: 0;
-    transition: max-height var(--transition), visibility var(--transition), opacity var(--transition);
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .nav-links.active {
     max-height: 500px;
-    visibility: visible;
     opacity: 1;
 }
 
@@ -2018,6 +2016,19 @@ html.dark-mode .feature-card {
         align-items: center;
         justify-content: space-between;
         padding-top: 80px;
+    }
+
+    .nav-links {
+        display: flex !important;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+        opacity: 1;
     }
 
     .hero-content {
