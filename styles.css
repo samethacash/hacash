@@ -502,6 +502,22 @@ html:not(.dark-mode) .moon-icon {
     animation-delay: 10s;
 }
 
+/* Orb Text Styling */
+.orb-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.5rem, 8vw, 3rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(0, 102, 204, 0.4);
+    letter-spacing: 2px;
+    z-index: 10;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+}
+
 @keyframes orb-float {
     0%, 100% {
         transform: translate(0, 0);
@@ -1620,6 +1636,16 @@ html.dark-mode .feature-card {
 /* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
 
 /* Base: Mobile (375px - 599px) - Already styled above */
+
+/* Mobile Text Optimization */
+@media (max-width: 599px) {
+    .orb-text {
+        font-size: clamp(1rem, 6vw, 1.8rem);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 102, 204, 0.3);
+        letter-spacing: 1px;
+        font-weight: 800;
+    }
+}
 
 /* Tablet & Small Desktop (600px+) */
 @media (min-width: 600px) {
