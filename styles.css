@@ -474,12 +474,6 @@ html:not(.dark-mode) .moon-icon {
     animation: orb-float 15s ease-in-out infinite;
 }
 
-@media (max-width: 767px) {
-    .gradient-orb {
-        transform: translateY(80px);
-    }
-}
-
 .orb-1 {
     width: 400px;
     height: 400px;
@@ -496,6 +490,19 @@ html:not(.dark-mode) .moon-icon {
     bottom: -200px;
     right: -200px;
     animation-delay: 5s;
+}
+
+@media (max-width: 767px) {
+    .orb-1 {
+        top: 100px;
+        left: -100px;
+    }
+
+    .orb-2 {
+        top: 50px;
+        right: -100px;
+        bottom: auto;
+    }
 }
 
 .orb-3 {
