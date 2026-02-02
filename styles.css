@@ -2014,7 +2014,18 @@ html.dark-mode .feature-card {
     }
 
     .hero-text {
-        margin-top: 150px;
+        margin-top: 300px;
+        order: 2;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .hero-visual {
+        order: 1;
+        display: none;
     }
 
     /* Mobile: Move convergence point to specified area - top: 38% */
